@@ -1,0 +1,160 @@
+<!-- ZONES DELETEALL CODE STARTS -->
+<div class="pp-daz" *ngIf="data=='DA'">
+    <div class="pp-hd">
+      <div class="__fl"><label><img src="../../../assets/VTAG_Images/warning.png"></label>Delete All Zones</div>
+      <div class="__fr" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
+  
+    <div class="pp-bd">
+    <label class="pp-msg">Are you sure you want to delete every zone?</label>
+    <label class="pp-no">Deleting zones is a permanent operation and cannot be undone.</label>
+    </div>
+  
+    <div class="pp-ft">
+        <div>
+          <label class="pp-Ybtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt="" /> Yes</label>
+          <label class="pp-Nbtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+        </div>
+    </div>
+    </div>
+<!-- ZONES DELETEALL CODE ENDS -->
+
+<!-- CART PATH MANAGER CODE STARTS -->
+<div class="bdr_wdh" *ngIf="data=='CP'">
+    <div class="namettl">
+      <span>Cart Path Manager</span>
+      <span class="__min">
+        <i class="fa fa-window-minimize miniMize" aria-hidden="true"></i>
+        <i (click)="close()" class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="__bDr">
+      <div style="border: 1px solid #000;">
+        <div class="__holehead">
+          <div class="__wdh5"><span></span></div>
+          <div class="__wdh40"><span>Hole</span></div>
+          <div class="__wdh40"><span>Name</span></div>
+          <div class="__wdh15"><span>Enabled</span></div>
+        </div>
+        <div style="background: #d2d2d2;">
+          <div class="__dgbb">
+            <div class="__dfpt">
+              <div class="__wta" (click)="accordian()"><span><i class="fa fa-angle-down" aria-hidden="true"></i></span></div>
+              <div class="__wpl" ><span>5</span></div>
+              <div class="_wdfc" >
+                <span>
+                  <div class="form-check">
+                    <input type="checkbox" value="" class="form-check-input">
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="_hc" *ngIf="holecount">
+              <div class="_wdf">
+                <div  class="_w5"></div>
+                <div class="holevalues">
+                  <div class="__dfbb">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_wdf">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="__dgbb">
+            <div class="__dfpt">
+              <div class="__wta" (click)="accordian1()"><span><i class="fa fa-angle-down" aria-hidden="true"></i></span></div>
+              <div class="__wpl" ><span>5</span></div>
+              <div class="_wdfc" >
+                <span>
+                  <div class="form-check">
+                    <input type="checkbox" value="" class="form-check-input">
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="_hc" *ngIf="holecount1">
+              <div class="_wdf">
+                <div  class="_w5"></div>
+                <div class="holevalues">
+                  <div class="__dfbb">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_wdf">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="__dgbb">
+            <div class="__dfpt">
+              <div class="__wta" (click)="accordian2()"><span><i class="fa fa-angle-down" aria-hidden="true"></i></span></div>
+              <div class="__wpl"><span>5</span></div>
+              <div class="_wdfc">
+                <span>
+                  <div class="form-check">
+                    <input type="checkbox" value="" class="form-check-input">
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="_hc"  *ngIf="holecount2">
+              <div class="_wdf">
+                <div  class="_w5"></div>
+                <div class="holevalues">
+                  <div class="__dfbb">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_wdf">
+                    <div class="__wbrpl2">5</div>
+                    <div class="_wbrpl">5th Fairway</div>
+                    <div class="__wdfjc">
+                      <div class="form-check">
+                        <input type="checkbox" value="" class="form-check-input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- CART PATH MANAGER CODE ENDS -->
+  

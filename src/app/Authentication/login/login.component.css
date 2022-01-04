@@ -1,0 +1,76 @@
+.bg {
+    background: url('../../../assets/imgs/world_topo.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .loginbg {
+    background-color: rgb(14 59 73 / 49%);
+    width: 290px;
+    height: 100vh;
+    color: #ffffff;
+    margin-left: 140px;
+  }
+  .form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+  }
+  .form-control{
+    height: 22px;
+    padding: 0rem .75rem;
+    border-radius: 0.1rem;
+    font-size: 0.8rem;
+  }
+  /* checkbox */
+  .check input[type=checkbox]:not(old),
+  .check input[type=radio   ]:not(old){
+    width   : 28px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0;
+  }
+  
+  .check input[type=checkbox]:not(old) + label,
+  .check input[type=radio   ]:not(old) + label{
+    display      : inline-block;
+    margin-left  : -28px;
+    padding-left : 19px;
+    font-size: 12px;
+    /* background   : url('../../assets/imgs/lite-blue-check.png') no-repeat 0 0; */
+    background   : url('../../../assets/imgs/lite-blue-check.png') no-repeat 0 0;
+
+    /* line-height  : 24px; */
+    line-height  : 14px;
+  }
+  
+  .check input[type=checkbox]:not(old):checked + label{
+    /* background-position : 0 -24px; */
+    background-position : 0 -16px;
+  }
+  
+  .check input[type=radio]:not(old):checked + label{
+    background-position : 0 -48px;
+  }
+  .btngreen {
+    background: #4caf50;
+    color: #fff;
+    padding: 2px 27px;
+    font-size: 13px;
+  }
+  .btnblue {
+    /* border: 1px solid #4169e1; */
+    /* background: #4169e1; */
+    border: 1px solid #8b8c90;
+    background: #143f09;
+    color: #ffffff;
+    font-size: 13px;
+    /* font-size: 10px; */
+    padding: 2px;
+  }
+  .btn:focus{
+    box-shadow: none;
+  }
+  

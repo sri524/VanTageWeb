@@ -1,0 +1,97 @@
+<!-- add event code -->
+<div style="min-width: 20vw;" *ngIf="data=='AE'">
+    <div class="pp-hd">
+      <div class="__fl"><label>Add Event</label></div>
+      <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="pp-bd">
+        <div class="mb03 row">
+            <label for="inputname" class="col-sm-4 col-form-label">Event Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputname">
+            </div>
+        </div>
+        <div class="mb03 row">
+            <label for="inputdate" class="col-sm-4 col-form-label">Date</label>
+            <div class="col-sm-8">
+                <input type="date" placeholder="Enter date" class="form-control" id="inputdate">
+            </div>
+        </div>
+        <div class="mb03 row">
+            <label for="inputdate" class="col-sm-4 col-form-label">Start</label>
+            <div class="col-sm-8">
+                <input type="time" placeholder="Enter time" class="form-control" id="inputdate">
+            </div>
+        </div>
+        <div class="mb03 row">
+            <label for="inputdate1" class="col-sm-4 col-form-label">End</label>
+            <div class="col-sm-8">
+                <input type="time" placeholder="Enter time" class="form-control" id="inputdate1">
+            </div>
+        </div>
+        <div class="col-12 txtcenter">
+            <button class="btngradient">OK</button>
+            <button class="btngradient">Cancel</button>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- impression report code  -->
+  <div class="bdr_wdh" *ngIf="data=='IR'">
+    <div class="namettl">
+        <span>Wrok Area Report</span>
+        <span style="float: right;" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+    <div class="__bDr">
+        <div class="__Date">
+            <div style="display: flex;"><input type="date" placeholder="MM/DD/YYYY" class="date-inpt form-control"> </div>
+            <div style="padding-left: 10px;display: flex;"><input type="date" placeholder="MM/DD/YYYY" class="date-inpt form-control">
+            </div>
+        </div>
+        <div class="__icons">
+            <i class="fa fa-arrow-left"></i>
+            <i class="fa fa-arrow-right"></i>
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+            <i class="fa fa-print" aria-hidden="true"></i>
+            <div>
+                <div (click)="savedd()">
+                    <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+                    <span style="margin-left: -5px;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                </div>
+                <div class="tagtoggle" *ngIf="dropdown">
+                    <ul style="list-style-type: none;">
+                        <li><a href="">Acrobat (PDF) file</a></li>
+                        <li><a href="">CVS (comma delimited)</a></li>
+                        <li><a href="">Excel 97-2003</a></li>
+                        <li><a href="">Rich Text Format</a></li>
+                        <li><a href="">TIFF File</a></li>
+                        <li><a href="">Web Archive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 60px 10px;">
+            <div class="rept-bx">
+                <p>Error: System.Reflection.TargetInvocationException : [Async_ExceptionOccurred]</p>
+                <p>Arguments: </p>
+                <p>Debugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=5.1.50918.00&File=System.dll&Key=Async_ExceptionOccurred
+                   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+                   at Telerik.Reporting.Service.SilverlightClient.ListRenderingExtensionsEventArgs.get_Extensions()
+                   at Telerik.ReportViewer.Silverlight.ReportViewerModel.OnListRenderingExtensionsCompleted(Object sender, ListRenderingExtensionsEventArgs e)</p>
+                
+                <p>------------- InnerException: -------------</p>
+                
+                <p>System.ServiceModel.ProtocolException : [ResponseContentTypeMismatch]</p>
+                <p>Arguments: text/html,text/xml; charset=utf-8,1024,﻿</p>
+                <p>Error: System.Reflection.TargetInvocationException : [Async_ExceptionOccurred]</p>
+                <p>Arguments: </p>
+            </div>
+        </div>
+    </div>
+</div>

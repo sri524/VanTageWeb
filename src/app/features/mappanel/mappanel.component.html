@@ -1,0 +1,523 @@
+<div class="_mar">
+  <!-- <mat-tab-group animationDuration="0ms"> -->
+    <!-- <mat-tab label="General"> -->
+      <div *ngIf="(Menushow==='G')" class="tabmenubg">
+        <div class="br1Px">
+          <div>
+            <!-- <select class="form-select">
+              <option>CA - BC - Clint</option>
+              <option>CA - BC - Engineering Test</option>
+              <option>CA - BC - Northlands Advertising Demo</option>
+              <option>CA - BC - Vantage Creek Landscape</option>
+              <option>CA - BC - Vantage Creek Portrait</option>
+              <option>DSG Factory Floor</option>
+            </select> -->
+
+            <select class="form-select" [(ngModel)]="installationId" (ngModelChange)=changeInstId(installationId)>
+              <option  *ngFor="let inst of installationsDetails" [(ngValue)]="inst.id">{{inst.name}}</option>
+              <option value="22E2909E-51F7-405A-9780-131EF0327F30">Asia - SG - SICC</option> 
+            <option value="91FA3746-D5F9-4552-AC0B-19A8DB1EC2E6">US - CA - Oak Creek</option> 
+            <option value="3F044F3C-D5D2-4DFE-9050-C9D9F3D9760F">Asia - GU - Onward Mangilao</option>
+            <!-- <option value="91FA3746-D5F9-4552-AC0B-19A8DB1EC2E6">US - CA - Oak Creek</option> -->
+
+           
+            </select>
+          </div>
+          <div class="_tapc">
+            <span><img (click)="onClick('dsg')" class="letteractive img-fluid" src="../../../assets/VTAG_Images/map_dsg.png"></span>
+            <span><img  class="mapletters img-fluid" src="../../../assets/VTAG_Images/map_openstreet.png"></span>
+            <span><img (click)="onClick('bing')"   class="mapletters img-fluid" src="../../../assets/VTAG_Images/map_bing.png"></span>
+            <span><img (click)="onClick('gmap')" class="mapletters img-fluid" src="../../../assets/VTAG_Images/map_google.png"></span>
+          </div>
+          <div class="mAp">MAP</div>
+        </div>
+        <div class="taGs">
+          <div class="__hov">
+            <div class="__viewImg" (click)="showTagsMenu()"><img class="img-fluid" src="../../../assets/VTAG_Images/truck_unselected.png" alt="" /></div>
+            <div class="showtags" (click)="showtags()">
+              <span>Show Tags <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+            </div>
+
+            
+          </div>
+
+          <!-- togglenav -->
+          <div class="tagtoggle" *ngIf="showtag">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="active" id="activetag" autocomplete="off"
+              (change)="$event.target.checked? (isfrmChecked = true) : isfrmChecked = false; activeIdleTags($event,isfrmChecked);">
+              <label class="form-check-label" for="activetag">
+                Active Tags
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="idle" id="idletag" autocomplete="off"
+               (change)="$event.target.checked? (isfrmChecked = true) : isfrmChecked = false; activeIdleTags($event,isfrmChecked);">
+              <label class="form-check-label" for="idletag">
+                Idle Tags
+              </label>
+            </div>
+          </div>
+          <!-- togglenav -->
+          <div class="viEw">
+            <span>VIEW</span>
+          </div>
+        </div>
+        <div class="loCkwdh">
+          <div class="_df">
+            <div class="_dcta" >
+              <div class="loCks" (click)="general('L')" [ngClass]=" flag ? 'enable' : 'disable'">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/imgs/lockred.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Lock</div>
+              </div>
+              <div class="loCks" (click)="general('UL')" [ngClass]=" flag ? 'enable' : 'disable'">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/imgs/unlockgreen.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Unlock</div>
+              </div>
+            </div>
+            <div>
+              <!-- <div class="loCks" (click)="general('LA')">
+                <span><img class="img-fluid" src="../../../assets/VTAG_Images/lockall.png" width="19" alt="" /> <span>Lock All</span></span>
+              </div>
+              <div class="loCks" (click)="general('ULA')">
+                <span ><img class="img-fluid" src="../../../assets/VTAG_Images/unlockall.png" width="19" alt="" /> <span>Unlock All</span></span>
+              </div> -->
+              <div class="loCks">
+                <span><img class="img-fluid" src="../../../assets/VTAG_Images/lockall.png" width="19" alt="" /> <span>Lock All</span></span>
+              </div>
+              <div class="loCks">
+                <span ><img class="img-fluid" src="../../../assets/VTAG_Images/unlockall.png" width="19" alt="" /> <span>Unlock All</span></span>
+              </div>
+              <div class="loCks" (click)="general('LS')">
+                <span><img class="img-fluid" src="../../../assets/imgs/globe.png" width="19" alt="" /> <span>Schedule</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>LOCK</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="general('EM')">
+              <div class="__iCon">
+                <!-- <img class="img-fluid" src="../../../assets/imgs/" alt="" /> -->
+                <div class="__iCon"><img class="img-fluid" style="color: yellow;" src="../../../assets/imgs/send.png" alt="" /></div>
+              </div>
+              <div class="__icontxt"><span>Edit</span></div>
+            </div>
+            <div class=" loCks disabledbutton" [ngClass]=" flag ? 'enable' : 'disable'">
+              <!-- <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/message send.png" alt="" /></div> -->
+              <div class="__iCon"><img class="img-fluid" style="color: yellow;" src="../../../assets/imgs/send.png" alt="" /></div>
+              <div class="__icontxt"><span>Send</span></div>
+            </div>
+            <div class=" loCks" (click)="general('SA')">
+              <div class="__iCon"><img class="img-fluid" style="color: yellow;" src="../../../assets/imgs/sendall.png" alt="" /></div>
+              <div class="__icontxt"><span>Send All</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>MESSAGES</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" [ngClass]=" panelmessage ? 'enablebutton':'disabledbutton' ">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/sim_move.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Move</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>DEMO</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <a href="http://dsgtag.net/m/dsg-login.html?ReturnUrl=%2fm%2fdsg-f_b.html" target="_blank">
+              <div class=" loCks">
+                <div class="__iCon">
+                  <img class="img-fluid" src="../../../assets/VTAG_Images/kitchenIcon.png" alt="" />
+                </div>
+                <div class="__icontxt"><span>F&B Orders</span></div>
+              </div>
+            </a>
+          </div>
+          <div class="mEsg">
+            <span>F&B</span>
+          </div>
+        </div>
+        <div class="__dSg">
+          <div class="__dSgwdh">
+            <a href="http://dsgtag.net/News/default.aspx" target="_blank">
+              <div class=" __dSgloCks">
+                <div class="__iCon">
+                  <img style="height: 40px;" class="img-fluid" src="../../../assets/VTAG_Images/dsgprotected.png" alt="" />
+                </div>
+                <div class="__icontxt"><span>Show Dashboard</span></div>
+              </div>
+            </a>
+          </div>
+          <div class="__dSgmEsg">
+            <span>DSG</span>
+          </div>
+        </div>
+      </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Trails"> -->
+      <div *ngIf="(Menushow==='T')" class="tabmenubg">
+        <div class="loCkwdh">
+          <div style="display: flex;">
+            <div style="display: contents;text-align: center;">
+              <div class="loCks" [ngClass]=" panelmessage ? 'enablebutton':'disabledbutton' " (click)="ShowHideTrails('S')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/trail.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Show</div>
+              </div>
+              <div class="loCks" [ngClass]=" trails ? 'enablebutton':'disabledbutton' " (click)="ShowHideTrails('H')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/clear.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Hide</div>
+              </div>
+              <div class="loCks" [ngClass]=" alltrails ? 'enablebutton':'disabledbutton' " (click)="ShowHideTrails('HA')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/clearall.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Hide All</div>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>VIEW</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" [ngClass]=" trails ? 'enablebutton':'disabledbutton' ">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/kml.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>KML</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>EXPORT</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" style="width: 11%;">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/calendar.png" alt="" (click)="_openCalendar(picker)" />
+                <span *ngIf="this.Today==true">Today</span>
+                <i class="fa fa-angle-down" aria-hidden="true" (click)="picker.click()"></i>
+              </div>
+              <div style="width:min-content;position:absolute" class="__icontxt"  >        
+                <!-- <div> -->
+                  <mat-form-field>
+                   <input matInput [matDatepicker]="picker" class="matinput" (focus)="_openCalendar(picker)" (dateInput)="OnDateChange($event.value)" [(ngModel)]='date' (click)="_openCalendar(picker)" #elementToFocus>
+                   <mat-datepicker #picker="matDatepicker" (closed)="eventCloseHandler($event)" ></mat-datepicker>
+                 </mat-form-field>  
+               <!-- </div> -->
+                </div>
+                <!-- <i class="fa fa-angle-down" aria-hidden="true" (click)="picker.click()"></i> -->
+
+            </div>
+            <div class="" style="width: 500px;">
+              <div class="custom-slider">
+                <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+              </div>
+            </div>
+            <div class=" loCks">
+              <div class="__iCon"><img class="img-fluid" width="25" src="../../../assets/VTAG_Images/resetClock.png" alt="" /></div>
+              <div class="__icontxt"><span>Reset</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>DATE/TIME</span>
+         
+
+          </div>
+        </div>
+      
+      </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Zones"> -->
+      <div *ngIf="(Menushow==='Z')" class="tabmenubg">
+        <div class="loCkwdh">
+          <div style="display: flex;">
+            <div style="display: contents;text-align: center;">
+              <div class="loCks" (click)="ZonesShowHide('R')" >
+                <div class="Res__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/zone.png" alt="" /></div>
+                <div class="Res__icontxt" style="font-size: 12px;">Restricted Zones</div>
+              </div>
+              <div class="loCks" (click)="ZonesShowHide('W')">
+                <div class="worK__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/WorkZones.png" alt="" /></div>
+                <div class="worK__icontxt" style="font-size: 12px;">Work Zones</div>
+              </div>
+              <div class="loCks" (click)="select(1)" [ngClass]=" commonzone ? 'enablebutton':'disabledbutton' ">
+                <div class="seL__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/cursor.png" alt="" /></div>
+                <div class="seL__icontxt" style="font-size: 12px;">Select</div>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>VIEW</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" [ngClass]=" rstctedzone ? 'enablebutton':'disabledbutton' ">
+              <div class="addRes__iCon" (click)="select(1)">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/AddZone.png" alt="" />
+              </div>
+              <div class="addRes__icontxt"><span>Add <br>Restricted Zone</span></div>
+            </div>
+            <div class=" loCks" [ngClass]=" rstctedzone ? 'enablebutton':'disabledbutton' "  (click)="select(3)">
+              <div class="gEof__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/AddGeofence.png" alt="" /></div>
+              <div class="gEof__icontxt"><span>Add Geofence</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>RESTRICTED</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" [ngClass]=" wrkzone ? 'enablebutton':'disabledbutton' " (click)="select(2)">
+              <div class="addWz__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/AddWorkZone.png" alt="" />
+              </div>
+              <div class="addWz__icontxt"><span>Add <br>Work Zone</span></div>
+            </div>
+            <div class=" loCks" [ngClass]=" wrkzone ? 'enablebutton':'disabledbutton' " (click)="select(4)">
+              <div class="addHz__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/AddHomeZone.png" alt="" />
+              </div>
+              <div class="addHz__icontxt"><span>Add <br>Home Zone</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>WORK</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="zoness('DA')" [ngClass]=" commonzone ? 'enablebutton':'disabledbutton' ">
+              <div class="delAll__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/clearall.png" alt="" />
+              </div>
+              <div class="delAll__icontxt"><span>Delete All</span></div>
+            </div>
+            <div class=" loCks" (click)="zoness('CP')">
+              <div class="carT__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/cartpath.png" alt="" />
+              </div>
+              <div class="carT__icontxt"><span>Cart Path</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>MANAGE</span>
+          </div>
+        </div>
+      </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Reports"> -->
+      <div *ngIf="(Menushow==='R')" class="tabmenubg">
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="Reports('U')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/truck_unselected.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Usage</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>VEHICLE</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="Reports('AS')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/Pace.PNG" alt="" />
+              </div>
+              <div style="width: 42px;" class="__icontxt"><span>Average Pace</span></div>
+            </div>
+            <div class=" loCks" (click)="Reports('PD')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/pace-details.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Pace Details</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>PACE</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="Reports('FB')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/FB-menuIcon.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>F&B Sales</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>F&B</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" loCks" (click)="Reports('WR')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/WorkZones.png" alt="" />
+              </div>
+              <div style="width: 42px;" class="__icontxt"><span>Area Analysis</span></div>
+            </div>
+            <div class=" loCks" (click)="Reports('WH')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/workHistory.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Work History</span></div>
+            </div>
+            <div class=" loCks" style="width: 87px;" (click)="Reports('VA')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/mower_selected.png" alt="" />
+              </div>
+              <div class="__icontxt" style="width: auto;height: auto;"><span>Detailed Vehicle Activity</span></div>
+            </div>
+            <div class=" loCks" (click)="Reports('I')">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/idle.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Idle</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>WORK</span>
+          </div>
+        </div>
+        <div class="__dSg">
+          <div class="__dSgwdh">
+            <div class="__biLLing" (click)="Reports('II')">
+              <div class="__iCon">
+                <img style="height: 40px;" class="img-fluid" src="../../../assets/VTAG_Images/import_invoice.png" alt="" />
+              </div>
+              <div class="__icontxt"><span>Import Invoice</span></div>
+            </div>
+          </div>
+          <div class="__dSgmEsg">
+            <span>BILLING</span>
+          </div>
+        </div>
+      </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Setup"> -->
+      <div *ngIf="(Menushow==='S')" class="tabmenubg">
+        <div class="loCkwdh">
+          <div class="_df" [ngClass]=" setupflag ? 'enablebutton':'disabledbutton' ">
+            <div class="_dcta">
+              <div class="setuploCks" (click)="Setup('C')" >
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/course.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Course</div>
+              </div>
+              <div class="setuploCks" (click)="Setup('P')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/greenview.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Pins</div>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>COURSE</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <div class=" setuploCks" (click)="Setup('PC')" [ngClass]=" setupflag ? 'enablebutton':'disabledbutton' ">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/Pace.PNG" alt="" />
+              </div>
+              <div class="__icontxt"><span>Pac</span></div>
+            </div>
+            <div class=" setuploCks">
+              <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/Pace.PNG" alt="" /></div>
+              <div style="width: 48px;" class="__icontxt"><span>Pace Schedule</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>PACE</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh" (click)="Setup('FB')">
+            <div class=" setuploCks">
+              <div class="__iCon">
+                <img class="img-fluid" src="../../../assets/VTAG_Images/FB-menuIcon.png" alt="" />
+              </div>
+              <div style="width: 50px;" class="__icontxt"><span>Food and Beverage</span></div>
+            </div>
+          </div>
+          <div class="mEsg">
+            <span>F&B</span>
+          </div>
+        </div>
+        <div class="mSgs">
+          <div class="msGswdh">
+            <a href="http://dsgtag.net/Advertising.aspx" target="_blank">
+              <div class=" setuploCks">
+                <div class="__iCon">
+                  <img style="width: 27px;" class="img-fluid" src="../../../assets/VTAG_Images/advertisingIcon.png" alt="" />
+                </div>
+                <div style="width: 46px;" class="__icontxt"><span>Ad Manager</span></div>
+              </div>              
+            </a>
+
+          </div>
+          <div class="mEsg">
+            <span>ADVERTISING</span>
+          </div>
+        </div>
+        <div class="loCkwdh">
+          <div class="_df">
+            <div class="_dcta">
+              <div class="setuploCks" (click)="Setup('AS')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/severe.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Alerts</div>
+              </div>
+              <div class="setuploCks" (click)="setUpBattery('BL')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/battery.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">Battery Levels</div>
+              </div>
+              <div class="setuploCks" (click)="Setup('GS')">
+                <div class="__iCon"><img class="img-fluid" src="../../../assets/VTAG_Images/Setting-icon.png" alt="" /></div>
+                <div class="__icontxt" style="font-size: 12px;">General</div>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>GENERAL</span>
+          </div>
+        </div>
+        <div class="loCkwdh">
+          <div [ngClass]=" panelmessage ? 'enablebutton':'disabledbutton' " class="disabledbutton">
+            <div >
+              <div class="setupTag"(click)="Setup('ON')" >
+                <span><img class="img-fluid" src="../../../assets/VTAG_Images/tagon.png" width="19" alt="" /> <span>On</span></span>
+              </div>
+              <div class="setupTag" (click)="Setup('OM')">
+                <span><img class="img-fluid" src="../../../assets/VTAG_Images/tagoffmonitored.png" width="19" alt="" /> <span>Off(monitored)</span></span>
+              </div>
+              <div class="setupTag" (click)="Setup('OF')">
+                <span><img class="img-fluid" src="../../../assets/VTAG_Images/tagoff.png" width="19" alt="" /> <span>Off</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="loCK">
+            <span>TAG</span>
+          </div>
+        </div>
+
+      </div>
+    <!-- </mat-tab> -->
+  <!-- </mat-tab-group> -->
+</div>

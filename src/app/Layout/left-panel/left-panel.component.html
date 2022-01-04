@@ -1,0 +1,240 @@
+
+<app-loader *ngIf="loader"></app-loader>
+
+ <div  class="lft-icon click"  (click)="openLftPanel()">
+    <img src="../../../assets/VTAG_Images/cart-img.png" width="40px" alt="">
+ </div>
+
+<div class="box" style="margin-top: 0.4rem;" *ngIf="lftPanel">
+    <div class="lft-bx textarea" [style.width.px]="width" contenteditable="true">
+        <div class="filter_DD bdrBtm __aroow click" (click)="closeLftPanel()">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <!-- <div class="">
+                
+            </div> -->
+        </div>
+        <div class="tableFixHead">
+            <table class="table lft-tbl table-bordered" [ngStyle]="style">
+                <thead>
+                    <tr class="common_header"  *ngIf="playerDetails">
+                        <th id="__w8"></th>
+                        <th id="__w8">Name</th>
+                        <th id="__w11"></th>
+                        <th id="__w11"></th>
+                        <!-- <th id="__w11"></th> -->
+                        <th id="__w11"></th>
+                        <th id="__w8">Hole</th>
+                        <th id="__w8">Pace</th>
+                        <th id="__w8">Start</th>
+                        <th id="__w8"> Played</th>
+                        <th id="__w8">Thru</th>
+                        <th id="__w11">Battery</th>
+                    </tr>
+
+
+<tr class="common_header" *ngIf="serviceDetails">
+                        <th id="__w8"></th>
+                        <th id="__w8">Name</th>
+                        <!-- <th id="__w11"></th> -->
+                        <th id="__w11"></th>
+                        <!-- <th id="__w11"></th> -->
+                        <th id="__w11"></th>
+                        <th id="__w11">Start</th>
+                        <th id="__w11">End</th>
+                        <th id="__w8">Distance</th>
+                        <th id="__w8">Moving</th>
+                        <th id="__w8">Idle</th>
+                        <th id="__w8">Battery</th>
+                       
+                    </tr>
+
+                    <tr class="common_header" *ngIf="offSeasonDetails">
+                        <th id="__w8"></th>
+                        <th id="__w8">Name</th>
+                        <th id="__w11"></th>
+                        <th id="__w11"></th>
+                        <th id="__w11"></th>
+                        <th id="__w11"></th>
+                        <th id="__w8"></th>
+                        <th id="__w8"></th>
+                        <th id="__w8"></th>
+                        <th id="__w8"></th>
+                        <!-- <th id="__w8"></th>
+                        <th id="__w11"></th> -->
+                    
+                       
+                    </tr>
+                   
+                </thead>
+                <tbody *ngIf="bindPlayerDetails">
+                    <!-- <tr> -->
+                        <tr (dblclick)="checkPopup(tag.data.id,tag.data)" class="click"  title="Double Click To View Tag Details" *ngFor="let tag of cartInfo; let i=index"
+                        value="{{tag.data?.name}}" (click)="componentMethodName($event,isfrmChecked,tag.data.id,tag,tag.data.name,i);" [class.active]="i === currentId">
+                        <td><input type="checkbox"  id="02"  name="" class="rd_st" [checked]="tag.data?.checked"></td>
+                        <td style="text-align: left;" class="col-3" title="{{tag.data?.name}}" [ngClass]="{'rr': tag.data?.color =='0', 'gg':tag.data?.color=='2','bb': tag.data?.color =='1', 'mm':tag.data?.color=='3','pp': tag.data?.color =='4', 'oo':tag.data?.color=='5' }">{{(tag.data?.name.toString().length > 10 ) ? (tag.data?.name.toString() | slice:0:10)+'..' : (tag.data?.name.toString())}}</td>
+
+                            <td *ngIf="tag.data?.coreState.seasonState== 'ON'"><img src="../../../assets/carts/tagon.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.seasonState== 'OFF'"><img src="../../../assets/carts/tagoff.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.seasonState== 'OFF_MONITORED'"><img src="../../../assets/carts/tagoffmonitored.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='PLAYER_CART'"><img src="../../../assets/carts/player.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='WALKER'"><img src="../../../assets/carts/walker.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SPECIAL_PRIVILEGE'"><img src="../../../assets/carts/sppriv.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MARSHAL_CART'"><img src="../../../assets/carts/marshal.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='TURF_EQUIPMENT'"><img src="../../../assets/carts/turf_equipment.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='UTILITY'"><img src="../../../assets/carts/utility.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MEMBER_CART'"><img src="../../../assets/carts/member.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='FOOD_CART'"><img src="../../../assets/carts/fb.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SHUTTLE'"><img src="../../../assets/carts/shuttle.png" alt="" width="15px" class="icon_st"></td>
+                            <!-- <td><img src="../../../assets/imgs/frequence.png" alt="" width="15px" class="icon_st"></td>  -->
+                            <td *ngIf="tag.data?.coreState.isLocked== true"><img src="../../../assets/imgs/lockred.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.isLocked== false"><img src="../../../assets/imgs/unlockgreen.png" alt="" width="10px" class="icon_st"></td>
+                           
+                         
+                            <td *ngIf="tag.data?.pace.inGame== true" width="15px" class="icon_st">{{tag.data?.pace.holeLabel}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== true && tag.data.pace.pace > 0" style="background-color:#FF0000" width="15px" class="icon_st">{{tag.data?.pace.pace}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== true && tag.data.pace.pace <= 0" width="10px" class="icon_st">{{tag.data?.pace.pace}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== true" width="15px" class="icon_st">{{tag.data?.pace.gameStartTime | date:'h:mm a '}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== true" width="15px" class="icon_st">{{ tag.data?.pace.gameStartTime | datedifference:tag.data?.pace.time}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== true" width="15px" class="icon_st">{{tag.data?.pace.playedHoles}}</td>
+                            <td *ngIf="tag.data?.pace.inGame== false" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.pace.inGame== false" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.pace.inGame== false" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.pace.inGame== false" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.pace.inGame== false" width="15px" class="icon_st"></td>
+                          
+                            <td *ngIf="tag.color == 'red'"><img src="../../../assets/carts/battery_low.png" alt="" width="30px" class="icon_st"></td>
+                            <td *ngIf="tag.color == 'green'"><img src="../../../assets/carts/battery_full.png" alt="" width="30px" class="icon_st"></td>
+                            <td *ngIf="tag.color == 'yellow'"><img src="../../../assets/carts/battery_mid.png" alt="" width="30px" class="icon_st"></td>
+
+                            <!-- <td>14</td> 
+                            <td>2</td>
+                            <td>9:00</td>
+                            <td>08</td>
+                            <td>1:27</td>
+                            <td><img src="../../../assets/imgs/batteryy.png" alt="" width="20px" class="icon_s"></td> -->
+                        </tr>
+
+
+                     
+                </tbody>
+                <tbody *ngIf="bindServiceDetails">
+                    <!-- <tr> -->
+                        <tr (dblclick)="checkPopup(tag.data?.id,tag.data)" class="click" title="Double Click To View Tag Details" *ngFor="let tag of cartInfo; let i=index"
+                        value="{{tag.data?.name}}" (click)="componentMethodName($event,isfrmChecked,tag.data.id,tag,tag.data.name,i);" [class.active]="i === currentId">
+                        <td><input type="checkbox"  id="02"  name="" class="rd_st" [checked]="tag.data?.checked"></td>
+                        <td style="text-align: left;" class="col-3" title="{{tag.data?.name}}" [ngClass]="{'rr': tag.data?.color =='0', 'gg':tag.data?.color=='2','bb': tag.data?.color =='1', 'mm':tag.data?.color=='3','pp': tag.data?.color =='4', 'oo':tag.data?.color=='5' }">{{(tag.data?.name.toString().length > 10 ) ? (tag.data?.name.toString() | slice:0:10)+'..' : (tag.data?.name.toString())}}</td>
+
+                            <!-- <td *ngIf="tag.coreState.seasonState== 'ON'"><img src="../../../assets/carts/tagon.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.coreState.seasonState== 'OFF'"><img src="../../../assets/carts/tagoff.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.coreState.seasonState== 'OFF_MONITORED'"><img src="../../../assets/carts/tagoffmonitored.png" alt="" width="10px" class="icon_st"></td> -->
+                            <td *ngIf="tag.data?.vehicleType=='PLAYER_CART'"><img src="../../../assets/carts/player.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='WALKER'"><img src="../../../assets/carts/walker.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SPECIAL_PRIVILEGE'"><img src="../../../assets/carts/sppriv.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MARSHAL_CART'"><img src="../../../assets/carts/marshal.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='TURF_EQUIPMENT'"><img src="../../../assets/carts/turf_equipment.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='UTILITY'"><img src="../../../assets/carts/utility.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MEMBER_CART'"><img src="../../../assets/carts/member.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='FOOD_CART'"><img src="../../../assets/carts/fb.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SHUTTLE'"><img src="../../../assets/carts/shuttle.png" alt="" width="15px" class="icon_st"></td>
+                            <!-- <td><img src="../../../assets/imgs/frequence.png" alt="" width="15px" class="icon_st"></td>  -->
+                            <td *ngIf="tag.data?.coreState.isLocked== true"><img src="../../../assets/imgs/lockred.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.isLocked== false"><img src="../../../assets/imgs/unlockgreen.png" alt="" width="10px" class="icon_st"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td *ngIf="tag.color == 'red'"><img src="../../../assets/carts/battery_low.png" alt="" width="30px" class="icon_st"></td>
+                            <td *ngIf="tag.color == 'green'"><img src="../../../assets/carts/battery_full.png" alt="" width="30px" class="icon_st"></td>
+                            <td *ngIf="tag.color == 'yellow'"><img src="../../../assets/carts/battery_mid.png" alt="" width="30px" class="icon_st"></td>
+                            <!-- <td>14</td> 
+                            <td>2</td>
+                            <td>9:00</td>
+                            <td>08</td>
+                            <td>1:27</td>
+                            <td><img src="../../../assets/imgs/batteryy.png" alt="" width="20px" class="icon_s"></td> -->
+                        </tr>
+
+
+                     
+                </tbody>
+
+                <tbody *ngIf="bindoffseasonDetails">
+                    <!-- <tr> -->
+                        <tr (dblclick)="checkPopup(tag.data?.id,tag.data)"  class="click" title="Double Click To View Tag Details" *ngFor="let tag of cartInfo;let i=index"
+                        value="{{tag.data?.name}}"  (click)="componentMethodName($event,isfrmChecked,tag.data.id,tag,tag.data.name,i);" [class.active]="i === currentId">
+                        <td><input type="checkbox"  id="02"  name="" class="rd_st" [checked]="tag.data?.checked"></td>
+                        <td style="text-align: left;" class="col-3" title="{{tag.data?.name}}" [ngClass]="{'rr': tag.data?.color =='0', 'gg':tag.data?.color=='2','bb': tag.data?.color =='1', 'mm':tag.data?.color=='3','pp': tag.data?.color =='4', 'oo':tag.data?.color=='5' }">{{(tag.data?.name.toString().length > 10 ) ? (tag.data?.name.toString() | slice:0:10)+'..' : (tag.data?.name.toString())}}</td>
+
+                            <td *ngIf="tag.data?.coreState.seasonState== 'ON'"><img src="../../../assets/carts/tagon.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.seasonState== 'OFF'"><img src="../../../assets/carts/tagoff.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.coreState.seasonState== 'OFF_MONITORED'"><img src="../../../assets/carts/tagoffmonitored.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='PLAYER_CART'"><img src="../../../assets/carts/player.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='WALKER'"><img src="../../../assets/carts/walker.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SPECIAL_PRIVILEGE'"><img src="../../../assets/carts/sppriv.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MARSHAL_CART'"><img src="../../../assets/carts/marshal.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='TURF_EQUIPMENT'"><img src="../../../assets/carts/turf_equipment.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='UTILITY'"><img src="../../../assets/carts/utility.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='MEMBER_CART'"><img src="../../../assets/carts/member.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='FOOD_CART'"><img src="../../../assets/carts/fb.png" alt="" width="15px" class="icon_st"></td>
+                            <td *ngIf="tag.data?.vehicleType=='SHUTTLE'"><img src="../../../assets/carts/shuttle.png" alt="" width="15px" class="icon_st"></td>
+                            <!-- <td><img src="../../../assets/imgs/frequence.png" alt="" width="15px" class="icon_st"></td>  -->
+                            <!-- <td *ngIf="tag.coreState.isLocked== true"><img src="../../../assets/imgs/lockred.png" alt="" width="10px" class="icon_st"></td>
+                            <td *ngIf="tag.coreState.isLocked== false"><img src="../../../assets/imgs/unlockgreen.png" alt="" width="10px" class="icon_st"></td> -->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td>14</td> 
+                            <td>2</td>
+                            <td>9:00</td>
+                            <td>08</td>
+                            <td>1:27</td>
+                            <td><img src="../../../assets/imgs/batteryy.png" alt="" width="20px" class="icon_s"></td> -->
+                        </tr>
+
+
+                     
+                </tbody>
+            </table>
+        </div>
+            <div class="btmbtns">
+                <a *ngIf="players!='0'"  (click)="changeCartDetails('p')"><div [ngClass]="{'activebtn': flag === 'p','dactivebtn': flag !== 'p'}"><span>Players</span></div></a>
+                <a *ngIf="services!='0'" (click)="changeCartDetails('s')"><div [ngClass]="{'activebtn': flag === 's','dactivebtn': flag !== 's'}"><span>Service</span></div></a>
+                <a *ngIf="utility!='0'" (click)="changeCartDetails('u')"><div [ngClass]="{'activebtn': flag === 'u','dactivebtn': flag !== 'u'}"><span>Utility</span></div></a>
+                 <a  *ngIf="offseason!='0'" (click)="changeCartDetails('o')"><div [ngClass]="{'activebtn': flag === 'o','dactivebtn': flag !== 'o'}"><span>Off-season</span></div></a>
+              
+               <div class="dactivebtn">
+                 <span>Current Average Pace</span>
+               </div>
+            </div>
+            <div class="cApace">
+                <div class="row">
+                <div class="col-2">
+                <img src="../../../assets/VTAG_Images/tracker.png" style="width: 50px;"/>
+                </div>
+                <div class="col-10">
+                <div class="d-flex" *ngFor="let course of courseNames">
+                <div class="col-5">
+                <label style="font-size: 0.8em;">{{course.name}}</label>
+                <h1 class="__time">04:05</h1>
+                </div>
+                <div class="__cart col-7">
+                    <p><span id="__cart-txt-t"  >{{this.negativecount.length}} Carts On Time</span></p>
+                    <p><span id="__cart-txt-b">{{this.positivecount.length}} Carts Behind</span></p>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    </div>
+</div>
+
+
+    
+
+<div class="__zoNes" *ngIf="properties">
+<app-zoneproperties></app-zoneproperties>
+</div>
+

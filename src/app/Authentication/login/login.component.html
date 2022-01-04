@@ -1,0 +1,47 @@
+<div class="bg">
+    <div class="loginbg">
+      <div style="padding: 140px 21px 21px 24px;"><img src="../../assets/imgs/vplogo-earth.png" class="img-fluid"></div>
+      <div style="font-size: 22px;text-align: center;">
+        <span>Tag Management Center</span>
+      </div>
+      <div style="padding: 5px 27px 0 27px;">
+        <!-- <form style="padding: 0 27px;"> -->
+          <form [formGroup]="form" (ngSubmit)="loginVT()">
+          <div class="form-group" style="padding-bottom: 5px;">
+            <label for="name" style="font-size: 12px;">Username</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+          </div>
+          <div class="form-group" style="padding-bottom: 5px;">
+            <label for="password" style="font-size: 12px;">Password</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+          </div>
+          <div  class="check" style="padding-bottom: 5px;">
+            <input id="checkbox1" type="checkbox" name="checkbox"><label for="checkbox1">Remember Me</label>
+          </div>
+          <div class="row" style="padding: 0 10px;">
+            <!-- <div  style="padding: 0;"> -->
+              <button class="btn btngreen" >Login</button>
+            <!-- </div> -->
+            <!-- <div class="col-6" style="padding: 0;text-align: right;">
+              <span style="font-size: 13px;">Forgot Password?</span>
+            </div> -->
+          </div>
+          <div class="row" style="border-bottom: 1px solid #ccc;margin: 0;padding-bottom: 5px;">
+            <div  style="padding: 0;text-align: right;">
+              <span style="font-size: 13px;">Forgot Password?</span>
+            </div>
+          </div>
+          <div class="d-grid gap-2" style="padding-top: 15px;">
+            <button class="btn btnblue" >Login with your<br/> Vantage Tag Account</button>
+          </div>
+          <!-- <button type="submit" class="btn btn-lg btn-block btn-primary">Submit</button> -->
+       </form>
+      </div>
+    </div>
+  </div>

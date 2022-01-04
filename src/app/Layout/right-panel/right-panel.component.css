@@ -1,0 +1,141 @@
+.rgt-pnl{
+    margin-top: 1rem;
+    height: calc(100vh - 93px);
+    overflow: auto;
+    position: relative;
+
+}
+
+
+.__fltr{
+    background: linear-gradient(#d8d8d8,#fffcfc);
+    height: auto;
+    color: black;
+    padding: 1rem 1.5rem 1rem 1rem;
+    line-height: 30px;
+    width: 250px;
+    border-top-left-radius: 5px;
+    font-weight: 500;
+}
+
+.flt-bx {
+    display: flex;
+    align-items: center;
+}
+.flt-arw{
+    position: relative;
+    left: 45px;
+}
+
+.form-select{
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 0rem 2.25rem 0rem 2.2rem;
+    height: 1.8rem;
+    border: 1px solid black;
+    outline: none;
+    background-color: transparent;
+
+  }
+  
+  .flt-cal{
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+
+
+  .restricted-bx{
+    margin-top: 0.3rem;
+    background: linear-gradient(#d8d8d8,#fffcfc);
+    height: auto;
+    color:#ffffff;
+    padding: 0.8rem 1rem 0.8rem 0.8rem;
+    width: 250px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: 7px solid #ffc000;
+}
+
+.rstd-bx {
+    display: flex;
+    align-items: center;
+}
+
+.warn-msg {
+    /* display: flex; */
+    /* ed1e24 */
+    /* align-items: center; */
+    top: 9px;
+    position: relative;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.__mr-at{
+  margin-right: auto;
+}
+.__pr5{
+    padding-right: 5px;
+}
+
+.rstd-cart-no{
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.rstd-chat{
+    border-right: 0.5px solid rgba(61, 59, 59, 0.74); padding-right: 10px;
+}
+/* .rstd-time{
+  padding:0px 10px;
+} */
+
+.restricted-bx-R{
+    margin-top: 0.3rem;
+    background: linear-gradient(#d8d8d8,#fffcfc);
+    height: auto;
+    color: black;
+    padding: 0.8rem;
+    width: 250px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: 7px solid #ed1e24;
+}
+
+.icon{
+    font-size: 12px;
+}
+
+.restricted-bx-b{
+    margin-top: 0.3rem;
+    background: linear-gradient(#d8d8d8,#fffcfc);
+    height: auto;
+    color: black;
+    padding: 0.8rem 1rem 0.8rem 0.8rem;
+    width: 250px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: 7px solid blue;
+}
+
+
+  .warn-icon {
+    position: absolute;
+    right: 0;
+    top: 16px;
+
+  }
+  .click{
+      cursor: pointer;
+  }
+  .clshigh{
+      background: #ed1e24 ;
+  }
+  .clslow{
+    background:#37a0c4;
+}
+.clsrnormal{
+    background:#ffc000;
+}
+  

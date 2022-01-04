@@ -1,0 +1,968 @@
+/* COURSE MANAGMENT */
+
+::ng-deep .mat-dialog-container{
+  padding: 0px;
+}
+
+.msePointr
+{
+  cursor:pointer
+  
+}
+.msePointr tr:hover,.highlighted{
+  background-color:#90ee90;
+}
+
+.pp-hd{
+padding: 4px 12px;
+height: 30px;
+font-weight: bold;
+font-size: 13px;
+color: #000000;
+background: linear-gradient( #fffcfc, #b7bfbf);
+height: 45px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.pp-bd{
+  background-color: white;
+  min-width: 278px;
+  padding: 10px;
+}
+  
+ .btngradient {
+  min-width: 6vw;
+  background: #4caf50;
+  color: #ffffff;
+  font-size: 14px;
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 0px 1px #cccccc;
+  margin: 0 4px;
+}
+.courseimg {
+  border: 1px solid #cccccc;
+  /* width: 385px;
+  height: 445px; */
+  
+}
+.courseimg .mapImag img{
+min-width: 390px;
+width: 396px;
+height: 448px;
+object-fit:contain;
+}
+.addCoursebg {
+  background: #ccc;
+  padding: 0px 5px;
+  font-size: 0.87em;
+  display: flex;
+  align-items: center;
+}
+.addCourse {
+  background: #ffffff;
+  margin: 2px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.cartIcons {
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 57px;
+  padding: 0 7px;
+}
+.carticonbg {
+  background: #000;
+  padding: 2px;
+  margin: 1px;
+  border: 2px solid #ffffff;
+}
+.carticonbg:hover {
+  background: #f8d0bf;
+  padding: 2px;
+  margin: 1px;
+  border: 2px solid #ffffff;
+}
+/* // */
+tbody div{
+overflow:auto;
+overflow-x:hidden;
+height:376px;
+margin-right: -6px;
+}
+.table>:not(caption)>*>*{
+padding: 0;
+}
+td table td{
+border-width: 1px;
+}
+.msePointr
+{
+cursor:pointer
+
+}
+
+.table{
+margin-bottom: 0;
+}
+
+/* // */
+.Course {
+margin: 0;
+position: absolute;
+transition: 1s ease;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+background: #cccccc;
+border: 1px solid #000000;
+border-radius: 7px;
+padding: 10px;
+width: 17em;
+font-size: 0.9em;
+}
+.CourseRules {
+margin: 0;
+position: absolute;
+transition: 1s ease;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+background: #cccccc;
+border: 1px solid #000000;
+border-radius: 7px;
+padding: 10px;
+width:40em ;
+}
+.welcomescreen {
+margin: 0;
+position: absolute;
+transition: 1s ease;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+background: #cccccc;
+border: 1px solid #000000;
+border-radius: 7px;
+padding: 10px;
+width:40em ;
+}
+.scorecard {
+margin: 0;
+position: absolute;
+transition: 1s ease;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+background: #cccccc;
+border: 1px solid #000000;
+border-radius: 7px;
+padding: 10px;
+width:30em ;
+}
+.imgHeight {
+overflow: auto;
+height: 452px;
+}
+.imgHeight img {
+margin: 3px 0px;
+padding: 0 5px;
+}
+.clrbdr {
+border: 1px solid #626262;
+padding: 3px;
+}
+.pl_20 {
+align-items: center;
+padding-left: 20px;
+}
+/* ////////dropdownedit */
+/* .select-editable {
+position: relative;
+background-color: white;
+}
+.select-editable select {
+position: absolute;
+top: 0px;
+left: 0px;
+font-size: 14px;
+border: none;
+margin: 0;
+}
+.select-editable input {
+position:absolute;
+top:0px;
+left:0px;
+width:100px;
+padding:1px;
+font-size:12px;
+border:none;
+}
+.select-editable select:focus, .select-editable input:focus {
+outline:none;
+} */
+
+  /* PIN PLACEMENT */
+
+  ::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  
+  .Ppp-hd{
+  padding: 4px 12px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #000000;
+  background: linear-gradient( #fffcfc, #b7bfbf);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  .Ppp-bd{
+    background-color: white;
+    justify-content: center;
+    padding: 20px 20px 10px;
+  }
+  
+  .P__fl{
+    float: left;
+    display: flex;
+    align-items: center;
+   }
+   
+   .P__fr{
+     float: right; font-size: 15px;
+   }
+   .Pbtngradient {
+    min-width: 6vw;
+    background: #4caf50;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+  .P__courseimg img{
+    width: 402px;
+    height: 427px;
+  }
+  .Pcoursenum {
+    background: #ffffff;
+    width: 100px;
+    border: 1px solid #ccc;
+    padding: 5px 3px;
+    margin-right: 19px;
+}
+.P_course {
+    display: flex;
+    align-items: center;
+}
+.P__schedule {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.PdDown {
+    margin-left: 9px;
+    line-height: 1;
+    font-size: 0.9em;
+    padding: .375rem 4.25rem .375rem 0.75rem;
+}
+.Pmldflx {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.Ppt10 {
+    padding-right: 10px;
+}
+.Pwdt_7 {
+    width: 94px;
+    text-align: center;
+}
+.countbg {
+    padding: 0 3px;
+}
+.countbg:hover {
+    background: #90ee90;
+    color: #fff;
+    padding: 0 3px;
+}
+.Pfleft{
+    float: left;
+}
+.Ptxtrt{
+    text-align: right;
+}
+.Pprl5_15{
+    padding: 5px 15px;
+}
+
+/* PASE CSS */
+
+.PCpp-hd{
+    padding: 4px 12px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #000000;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    
+    .PCpp-bd{
+      background-color: white;
+      justify-content: center;
+      padding: 20px 10px 10px;
+    }
+    
+    .PC__fl{
+      float: left;
+      display: flex;
+      align-items: center;
+     }
+     
+     .PC__fr{
+       float: right; font-size: 15px;
+     }
+     .PCbtngradient {
+      min-width: 6vw;
+      background: #4caf50;
+      color: #ffffff;
+      font-size: 14px;
+      border: 1px solid #000000;
+      box-shadow: 0px 0px 0px 1px #cccccc;
+      margin: 0 4px;
+    }
+  .PCfleft{
+      float: left;
+  }
+  .PCtxtrt{
+      text-align: right;
+  }
+  .PCprl5_15{
+      padding: 5px 15px;
+  }
+  .PCcoursebtn {
+      padding: 3px 5px;
+      background: #171717;
+      font-size: 0.8em;
+      color: #ffffff;
+      border-radius: 2px;
+      margin: 0 1px;
+  }
+  
+    .PCtblbdy div{
+      overflow:scroll;
+      overflow-x:hidden;
+      height: calc(100vh - 440px);
+      margin-right: -6px;
+  }
+  .PCtable>:not(caption)>*>*{
+      padding: 0;
+  }
+  td table td{
+      border-width: 1px;
+  }
+  .PCtable{
+      margin-bottom: 0;
+  }
+  .PCspanarrow {
+      float: left;
+      margin-left: 3px;
+  }
+  .PCsortgreen {
+      color: #27e215;
+      margin-bottom: -20px;
+  }
+  .PCsortwhite {
+      color: #fff;
+      margin-bottom: -20px;
+  }
+  .PCsize-12 {
+      font-size: 12px;
+  }
+  input[type=number]::-webkit-inner-spin-button {
+      opacity: 1;
+  }
+  .checking{
+      margin-bottom: 0.7rem;
+  }
+  .PCplr5_tb3 {
+      padding: 3px 5px;
+      background: #ececec;
+  }
+  table .fa-times{
+      color: #ff0000;
+  }
+  table .fa-check{
+      color: #4caf50;
+  }
+
+
+  /* FB EDITOR CSS */
+
+  ::ng-deep .mat-dialog-container{
+    padding: 0px;
+  } 
+  .FBpp-hd{
+  padding: 4px 12px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #000000;
+  background: linear-gradient( #fffcfc, #b7bfbf);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  .FBpp-bd{
+    background-color: white;
+    justify-content: center;
+    padding: 20px 10px 10px;
+  }
+  
+  .FB__fl{
+    float: left;
+    display: flex;
+    align-items: center;
+   }
+   
+   .FB__fr{
+     float: right; font-size: 15px;
+   }
+   .FBbtngradient {
+    min-width: 6vw;
+    background: #4caf50;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+.FBtxtrt{
+    text-align: right;
+}
+.FBtable{    
+    padding: 8px !important;;
+   
+}
+
+.fbImg {
+    width: 10vw;
+    height: 17vh;
+    object-fit: scale-down;
+    border: 1px solid #ccc;
+}
+.fbitem {
+    display: flex;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+.fbimgtxt{
+    display: flex;
+    border: 1px solid #ccc;
+    min-width: 70vw;
+}
+.FBcloseitems {
+    margin-left: auto;
+    position: relative;
+    align-self: center;
+    padding-left: 1em;
+}
+.FBp_7 {
+    padding: 7px;
+}
+.fbitemoverflow {
+    overflow: auto;
+    max-height: calc(100vh - 352px);
+    border: 2px solid #4caf50;
+    margin-bottom: 5px;
+}
+.FBbeverageht {
+    height: calc(100vh - 284px);
+}
+.FBthead{
+    background: #4caf50;
+    color: #ffffff;
+}
+.FBtbody tr:nth-child(odd) {
+    background-color: #cccccc;
+}
+
+.fbtable{
+    padding: 8px;
+}
+.table{
+    padding: 8px;
+  }
+.FBtbody tr:nth-child(even) {
+    font-size: 9px;
+    padding: 0;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.FBpb_17flx {
+    display: flex;
+    padding-bottom: 5px;
+}
+.FBLocations {
+    min-width: 11vw;
+    font-size: 12px;
+}
+.FBNewaddPage {
+    background: #ccc;
+    border: 1px solid #ccc;
+    padding: 5px 13px;
+    margin: 2px;
+}
+.FBNewaddPage input{
+    width: 7vw;
+}
+.FBnewPage {
+    background: #4caf50;
+    color: #fff;
+    align-self: center;
+    cursor: pointer;
+    padding: 5px 13px;
+    margin: 2px;
+}
+
+
+/* ALERT SETTING CSS */
+
+::ng-deep .mat-dialog-container {
+    padding: 0;
+  }
+  ::ng-deep .mat-tab-body-wrapper{
+       background: #f7f8f8;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  }
+  .Anamettl {
+    font-size: 13px;
+    padding: 4px 12px;
+    color: #000000;
+    font-weight: bold;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .Abdr_wdh {
+    background: #f7f8f8;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 25vw;
+  }
+
+  .AselectInput {
+    line-height: 1;
+    padding: 4px;
+    font-size: 0.9rem;
+    box-shadow: none;
+    border-radius: 2px;
+  }
+  .ApAd10__15 {
+    display: flex;
+    padding: 10px 15px;
+  }
+  .Abtngradient {
+    width: 40%;
+    background: #4caf50;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+  
+  .A__m5{
+   margin: 0 5px;
+  }
+  .A__pd{
+   padding: 11px 0;
+  }
+  .A__fltr{
+    justify-content: flex-end;
+    text-align: right;
+    display: flex;
+  }
+
+  ::ng-deep .mat-tab-label:hover {
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0));
+  }
+   
+  
+  ::ng-deep .mat-tab-label-active:hover {
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0));
+  }
+  ::ng-deep .mat-tab-label {
+    height: 23px !important;
+    padding: 0 2px !important;
+    margin: 3px 0px 0px;
+    font-size: 11px !important;
+    min-width: 54px !important;
+    opacity: 1 !important;
+    color: #000000 !important;
+  }
+  .Aalet_toggle {
+    padding: 0.5em;
+    border: 1px solid blue;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 15vw;
+  }
+  .A__plmh{
+    min-height: 0em;
+  }
+ .A__pldf{
+    min-height: 0em;
+    display: flex;
+  }
+  .A__w70{
+    width: 70%;
+  }
+  .Aall-veh img {
+    filter: invert(1);
+  }
+  .Alisten {
+    margin-left: auto;
+    padding: 1px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.ArepeAt {
+    padding-left: 6px;
+    padding-top: 0.1rem;
+}
+.Apt6 {
+    padding-top: 6px;
+}
+.Aptb1_rl7{
+    padding: 1px 7px;
+}
+
+/* BATTERY LEVELS */
+
+::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  
+  .Bpp-hd{
+  padding: 4px 12px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #000000;
+  background: linear-gradient( #fffcfc, #b7bfbf);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  .Bpp-hd img{
+    width: 18px; padding-right: 5px;  margin-top: -8px;
+  }
+  
+  .Bpp-bd{
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 20px 20px 10px;
+  }
+  
+  .B__fl{
+    float: left;
+    display: flex;
+    align-items: center;
+   }
+   
+   .B__fr{
+     float: right; font-size: 15px;
+   }
+   .Bbtngradient {
+    width: 40%;
+    background: #4caf50;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+
+  /* GENERAL CSS */
+
+  ::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  
+  .Gpp-hd{
+  padding: 4px 12px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #000000;
+  background: linear-gradient( #fffcfc, #b7bfbf);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  .Gpp-hd img{
+    width: 18px; padding-right: 5px;  margin-top: -8px;
+  }
+  
+  .Gpp-bd{
+    background-color: white;
+    min-width: 278px;
+    padding: 10px;
+  }
+    
+  .G__fl{
+    float: left;
+    display: flex;
+    align-items: center;
+   }
+   
+   .G__fr{
+     float: right; font-size: 15px;
+   }
+   .Gbtngradient {
+    width: 40%;
+    background: #4caf50;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+
+  /* ON CSS */
+
+  ::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  
+  .Opp-hd{
+  padding: 4px 12px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #000000;
+  background: linear-gradient( #fffcfc, #b7bfbf);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  .Opp-hd img{
+    width: 18px; padding-right: 5px;  margin-top: -8px;
+  }
+  
+  .Opp-bd{
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  
+  .Opp-msg{
+    padding:10px 20px;
+    font-size: 1rem;
+    font-weight:400;
+  
+  }
+  .Opp-no{
+  padding-top: 7px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  font-size: 1rem;
+  margin-top: -5px;
+  }
+  .Opp-ft{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    padding-bottom: 10px;
+  
+  }
+  .Opp-Ybtn{
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+  
+  }
+  
+  .Opp-Nbtn{
+    padding: 5px;
+    /* border-left: 1px solid black; */
+    cursor: pointer;
+    margin-left: 30px;
+  }
+  
+  .O__fl{
+    float: left;
+    display: flex;
+    align-items: center;
+   }
+   
+   .O__fr{
+     float: right; font-size: 15px;
+   }
+   .oNgrenn{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: #00ff21;
+    margin-right: 7px;
+   }
+   .oORNG{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: #ff4d0c;
+    margin-right: 7px;
+   }
+   .oRED{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: #ff0000;
+    margin-right: 7px;
+   }
+
+/* RESET PIN CSS */
+
+::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  .Rpp-hd{
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #000000;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+    }
+  
+    .Rpp-hd img{
+      width: 20px; padding-right: 5px;  margin-top: -4px;
+    }
+  
+    .Rpp-bd{
+      text-align: center;
+      justify-content: center;
+    }
+  
+    .Rpp-msg{
+      padding:15px 10px 10px 10px;
+      font-size: 1rem;
+      font-weight:bold;
+    }
+    .Rpp-no{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        padding: 10px 15px 10px 15px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .Rpp-ft{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+    .Rpp-ft div{
+        cursor: pointer;
+    }
+    .Rpp-Ybtn{
+      float: left;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .Rpp-Ybtn .Rpp-Nbtn .Rimg{
+      margin-top: 1.5px;
+    }
+  
+    .Rpp-Nbtn{
+      padding: 5px;
+      border-left: 1px solid black;
+      cursor: pointer;
+    }
+  .R__fl{
+   float: left;
+  }
+  
+  .R__fr{
+    float: right; font-size: 15px;
+  }
+   .protip{
+  
+  margin: 0;
+  position: absolute;
+  transition: 1s ease;
+  top: 49%;
+  left: 48%;
+  transform: translate(2%, -51%);
+  background: #cccccc;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  padding: 10px;
+  width: 28em;
+  height: 28em;
+  overflow: auto;
+}
+.active{background: #f8d0bf;}
+@media (min-width:1600px){
+  .protip{
+  
+    margin: 0;
+    position: absolute;
+    transition: 1s ease;
+    top: 49%;
+    left: 49%;
+    transform: translate(0%, -51%);
+    background: #cccccc;
+    border: 1px solid #000000;
+    border-radius: 0px;
+    padding: 10px;
+    width: 28em;
+    height: 28em;
+    overflow: auto;
+  }
+  }  
+  

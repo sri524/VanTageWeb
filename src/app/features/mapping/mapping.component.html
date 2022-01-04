@@ -1,0 +1,7 @@
+
+
+<app-bing *ngIf="mapName == 'bing'"></app-bing>
+<app-dsg [cartdata]="cartdata" [StartRange]="StartRange" [EndRange]="EndRange" [Reset]="Reset" [Range]="Range"  [VisibilityStatus]="VisibilityStatus" [notificationDate]="notificationDate" [TimeOffset]="TimeOffset" *ngIf="mapName == 'dsg'"></app-dsg>
+
+<app-osm *ngIf="mapName == 'osm'"></app-osm>
+<app-gmap *ngIf="mapName == 'gmap'"></app-gmap>

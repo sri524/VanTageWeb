@@ -1,0 +1,227 @@
+.brDr{
+    /* border-left: 5px solid #ccc; */
+    /* border-bottom: 5px solid #ccc; */
+    /* border-right: 5px solid #ccc; */
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+  .borDer{
+    border-top: 22px solid #ccc;
+    border-right: 6px solid #ccc;
+    border-left: 6px solid #ccc;
+    border-bottom: 6px solid #ccc;
+  }
+  .form-control{
+    padding: 0rem .75rem;
+    font-size: 14px;
+  }
+  .form-select{
+    padding: 0rem 2.25rem 0rem .75rem;
+    font-size: 14px;
+  }
+  
+  ::ng-deep .mat-dialog-container{
+    padding: 0;
+  }
+  .mb-3{
+    margin: 0;
+    margin-bottom: 0.4rem!important;
+  }
+  .select-editable {position:relative; background-color:white; border:solid grey 1px;  width:120px; height:18px;}
+  .select-editable select {position:absolute; top:0px; left:0px; font-size:14px; border:none; width:120px; margin:0;}
+  .select-editable input {position:absolute; top:0px; left:0px; width:100px; padding:1px; font-size:12px; border:none;}
+  .select-editable select:focus, .select-editable input:focus {outline:none;}
+  
+  
+  /* change border radius for the tab , apply corners on top*/
+  .tabs input[type=radio] {
+    position: absolute;
+    opacity:0;
+  }
+  .tabs {
+    /* width: 650px; */
+    float: none;
+    list-style: none;
+    position: relative;
+    padding: 0;
+    /* margin: 75px auto; */
+  }
+  .tabs li{
+  float: left;
+  }
+  .tabs label {
+    /* display: block;
+    padding: 10px 20px;
+    border-radius: 2px 2px 0 0;
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    background: rgba(120,120,120,0.2);
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; */
+    display: block;
+    padding: 2px 20px;
+    margin: 2px 0px 0px 2px;
+    border-radius: 2px 2px 0 0;
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+  .click
+  {
+    cursor: pointer;
+  }
+  .fadeIn  label {
+    margin: 6px 5px 2px 13px;
+  }
+  
+  .tabs input[id^=tab]:checked + label {
+  /* background: red; */
+  color: #000;
+  top: 0;
+  background: #fff;
+  }
+  
+  .tabs2 input[id^=tab]:checked + label {
+  background: green;
+  color: #fff;
+  top: 0;
+  }
+  
+  .tabs [id^=tab]:checked ~ [id^=tab-content] {
+    display: block;
+  }
+  
+  .tab-content{
+    z-index: 2;
+    display: none;
+    text-align: left;
+    width: 100%;
+    font-size: 20px;
+    line-height: 140%;
+    padding-top: 10px;
+    padding: 15px;
+    color: #000000;
+    position: absolute;
+    left: 0;
+    box-sizing: border-box;
+    animation-duration: 0.5s;
+    border: 1px solid #ccc;
+    /* background: linear-gradient(124deg, black, #000000,#212020,#000000); */
+  }
+  .namettl {
+    font-size: 13px;
+    padding: 4px 12px;
+    color: #000000;
+    font-weight: bold;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btmicons {
+    padding: 3px;
+    font-size: 13px;
+    color: #fff;
+    background: #4caf50;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+  .btngradient {
+    width: 40%;
+    background: #4caf50;
+    color: #fff;
+    border: 1px solid #ffffff;
+    font-size: 14px;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+  .power {
+    font-size: 14px;
+    color: #000000;
+    max-width: 30px;
+    max-height: 30px;
+    border: 1px solid #000000;
+    padding: 3px;
+    margin-right: 8px;
+    border-radius: 4px;
+  }
+  
+  .__Fr{
+   float: right;
+  }
+  
+  .__bgm{
+    background: #ccc;margin: 0 13px;
+  }
+  
+  #__wtam{
+   width: 30%;text-align: right;margin: 0;padding: 0;color: #000000;
+  }
+  
+  #__wdtam{
+    width: 50%;text-align: right;margin: 0;padding: 0;color: #000000;
+  }
+  
+  .__pabw{
+    position: absolute;bottom: 7px;width: 100%;align-items: center;
+  }
+  
+  .__dfmt{
+    display: flex;margin-top: 5px
+  }
+  
+  .__df{
+    display: flex;
+  }
+  .__wdt5{
+    width: 50%;
+  }
+  .__wdt7{
+    width: 70%;
+  }
+  
+  .__fsc{
+  font-size: 14px;color: #000000;
+  }
+  
+  .btmiconscross{
+    padding: 3px;
+    font-size: 13px;
+    color: #fff;
+    background:red;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 0px 0px 1px #cccccc;
+    margin: 0 4px;
+  }
+  
+  
+  
+  /* .__controls {
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+  }
+  .__controlselect {
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    background-image: url('../../../assets/imgs/downarrow.png') no-repeat;
+  } */
+  

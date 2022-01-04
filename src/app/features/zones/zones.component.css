@@ -1,0 +1,225 @@
+::ng-deep .mat-dialog-container{
+    padding: 0px;
+  }
+  
+  .pp-hd{
+    padding: 4px 12px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #000000;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+    }
+  
+    .pp-hd img{
+      width: 20px; padding-right: 5px;  margin-top: -4px;
+    }
+  
+    .pp-bd{
+      text-align: center;
+      justify-content: center;
+      width:350px;
+    }
+  
+    .pp-msg{
+      padding:15px 10px 10px 10px;
+      font-size: 1rem;
+      font-weight:bold;
+    }
+    .pp-no{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding:0px 10px 10px 10px;
+    font-size: 0.8rem;
+    }
+    .pp-ft{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+    .pp-Ybtn{
+      float: left;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .pp-Ybtn .pp-Nbtn .img{
+      margin-top: 1.5px;
+    }
+  
+    .pp-Nbtn{
+      padding: 5px;
+      border-left: 1px solid black;
+      cursor: pointer;
+    }
+  .__fl{
+   float: left;
+  }
+  
+  .__fr{
+    float: right; font-size: 15px;
+  }
+ 
+  /* Cart Path Manager code starts */
+
+  ::ng-deep .mat-dialog-container {
+    padding: 0;
+  }
+  .namettl {
+    font-size: 13px;
+    padding: 4px 12px;
+    color: #000000;
+    font-weight: bold;
+    background: linear-gradient( #fffcfc, #b7bfbf);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .__bDr {
+    border-bottom: 5px solid #ededed;
+    border-left: 5px solid #ededed;
+    border-right: 5px solid #ededed;
+    align-items: baseline;
+    overflow: auto;
+  }
+  
+  .bdr_wdh {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    min-width: 36vw;
+  }
+  .holevalues {
+    border-top: 1px solid #7b7b7b;
+    border-left: 1px solid #7b7b7b;
+    width: 100%;
+    position: relative;
+    background: #f1f1f1;
+  }
+  .__wdh5 {
+    width: 5%;
+    height: 30px;
+    border: 1px solid #5d5d5d;
+    margin-right: 1px;
+    box-shadow: 2px 0px 1px 0px #ccc;
+    padding-top: 3px;
+  }
+  .__wdh40 {
+    width: 40%;
+    height: 30px;
+    border: 1px solid #5d5d5d;
+    margin-right: 1px;
+    padding-left: 5px;
+    box-shadow: 1px 0px 4px 0px #b9b9b9;
+    padding-top: 3px;
+  }
+  .__wdh15 {
+    width: 15%;
+    height: 30px;
+    padding-left: 5px;
+    border: 1px solid #5d5d5d;
+    padding-top: 3px;
+  }
+  .__holehead {
+    display: flex;
+    background: linear-gradient(#828282,#727272,#636363,#525252,#0a0a0a,#1f1f1f,#2f2f2f,#3f3f3f,#4f4f4f);
+    color: #ffffff;
+    font-size: 12px;
+    align-items: center;
+    padding: 1px;
+  }
+  .miniMize {
+    padding-right: 9px;
+    font-size: 12px;
+    font-weight: 100;
+  }
+  
+  .__min{
+  float: right;text-shadow: 1.25px 0.25px #fff, -1px 0px 0px #fff;
+  }
+  .__dgbb{
+   display: grid;
+   border-bottom: 1px solid #565656;
+  }
+  .__dfpt{
+  display: flex;padding-top: 3px;
+  }
+  .__wta{
+   width: 5%;text-align: center;
+  }
+  .__wpl{
+   width: 80%;padding-left: 2px;
+  }
+  .__wdf{
+    width: 15%;
+    justify-content: center;
+  }
+  ._wdf{
+    display: flex;
+  }
+  ._hc{
+    position:relative;
+  }
+  ._dfbb{
+   display: flex;
+   border-bottom: 1px solid #969696;
+  }
+  .__wbr{
+  width:42%;
+  border-right: 1px solid #ccc;
+  padding-left: 2px;
+  }
+  .__wbpl{
+   width:43%;
+   border-right: 1px solid #ccc;
+   padding-left: 2px;
+  }
+  .___wdfj{
+  width:15%;
+  display: flex;
+  justify-content: center;
+  }
+  
+    
+  ._wbrpl{
+   width:43%;border-right: 1px solid #ccc;padding-left: 2px;
+  }
+  
+  .__dgbb{
+    display: grid;border-bottom: 1px solid #565656
+  }
+  .__wta{
+   width: 5%;text-align: center; 
+  }
+  
+  ._wdfc{
+  width: 15%;display: flex;justify-content: center;
+  }
+  .__wdfjc{
+    width: 14%;display: flex;justify-content: center;
+  }
+  
+  ._w5{
+  width:5%
+  }
+  
+  .__dfbb{
+   display: flex;border-bottom: 1px solid #969696;
+  }
+  
+  
+  ._wbrpl
+  {
+    width:43%;border-right: 1px solid #ccc;padding-left: 2px;
+  }
+  .__wbrpl2{
+    width:42%;border-right: 1px solid #ccc;padding-left: 2px;
+  }
+  /* Cart Path Manager code starts */

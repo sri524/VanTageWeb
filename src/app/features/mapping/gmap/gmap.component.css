@@ -1,0 +1,19 @@
+.Position {
+    position: absolute;
+    opacity: 0.5;
+    transition: 1s ease;
+  }
+  .Position:hover {
+    position: absolute;
+    opacity: 1;
+    transition: .5s ease-out;
+  
+  }
+  
+  
+  .map {
+    height: calc(100vh - 71px);
+    width: 100%;
+    /* margin: 20px; */
+  }
+  

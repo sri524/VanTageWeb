@@ -1,0 +1,384 @@
+<!-- LOCK CODE STARTS-->
+
+<div class="pp-lvh" *ngIf="data=='L'" >
+  <!-- <div  class="pp-lvh" [ngClass]=" length ? 'enable' : 'disable'"> -->
+    <div class="pp-hd">
+      <div class="__fl"><img src="../../../assets/imgs/lockred.png" alt="" /><label>Lock Vehicles</label></div>
+      <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="pp-bd">
+      <label class="pp-msg">Are you sure you want to lock this vehicle?</label>
+      <label class="pp-no" *ngIf="length>'1'"> {{length}} tags has been selected</label>
+      <label class="pp-no" *ngIf="length=='1'">{{names}}</label>
+    </div>
+  
+    <div class="pp-ft">
+      <div>
+        <label class="pp-Ybtn" (click)="lock(name.id)"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt="" /> Yes</label>
+        <label class="pp-Nbtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+<!-- LOCK CODE ENDS-->
+
+
+
+<!-- LOCK CODE STARTS-->
+
+<div class="pp-lvh" *ngIf="data=='UL'" >
+  <!-- <div  class="pp-lvh" [ngClass]=" length ? 'enable' : 'disable'"> -->
+    <div class="pp-hd">
+      <div class="__fl"><img src="../../../assets/imgs/lockred.png" alt="" /><label>UnLock Vehicles</label></div>
+      <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="pp-bd">
+      <label class="pp-msg">Are you sure you want to unlock this vehicle?</label>
+      <label class="pp-no" *ngIf="length>'1'"> {{length}} tags has been selected</label>
+      <label class="pp-no" *ngIf="length=='1'">{{names}}</label>
+    </div>
+  
+    <div class="pp-ft">
+      <div>
+        <label class="pp-Ybtn" (click)="unlock(name.id,name.coreState.isLocked)"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt="" /> Yes</label>
+        <label class="pp-Nbtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+<!-- LOCK CODE ENDS-->
+
+
+<!-- LOCKALL CODE STARTS -->
+
+<div class="pp-lvh" *ngIf="data=='LA'">
+    <div class="pp-hd">
+        <div class="__fl"><img src="../../../assets/imgs/lockred.png" alt="" /><label>Lock Vehicles</label></div>
+        <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+
+    <div class="pp-bd">
+        <label class="pp-msg">Are you sure you want to lock all vehicles?</label>
+    </div>
+
+    <div class="pp-ft">
+        <div>
+            <label class="pp-Ybtn" (click)="lockall()"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt=""  />Yes</label>
+            <label class="pp-Nbtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" />No</label>
+        </div>
+    </div>
+</div>
+<!-- LOCKALL CODE ENDS -->
+
+<!-- UNLOCKALL CODE STARTS -->
+
+<div class="pp-lvh" *ngIf="data=='ULA'">
+  <div class="pp-hd">
+      <div class="__fl"><img src="../../../assets/imgs/lockred.png" alt="" /><label>UnLock Vehicles</label></div>
+      <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+  </div>
+
+  <div class="pp-bd">
+      <label class="pp-msg">Are you sure you want to unlock all vehicles?</label>
+  </div>
+
+  <div class="pp-ft">
+      <div>
+          <label class="pp-Ybtn" (click)="unlockall()"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt=""  />Yes</label>
+          <label class="pp-Nbtn"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" />No</label>
+      </div>
+  </div>
+</div>
+<!-- UNLOCKALL CODE ENDS -->
+<!--LOCKSCHEDULE CODE STARTS  -->
+<div class="bdr_wdh" *ngIf="data=='LS'" >
+  <div class="namettl">
+    <span>Lock Schedule</span>
+    <span style="float: right;" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></span>
+  </div>
+  <!--  -->
+  <div class="__tiMe" *ngIf="startTime || endTime">
+    <!-- <div style="background: linear-gradient(#000000,#cccccc,#000000);height: 25px;border: 1px solid #cccccc;"></div> -->
+    <div>
+      <span class="timewdh" ></span>
+      <span class="timewdh">1:00 AM</span>
+      <span class="timewdh">2:00 AM</span>
+      <span class="timewdh">3:00 AM</span>
+    </div>
+    <div>
+      <span class="timewdh">4:00 AM</span>
+      <span class="timewdh">5:00 AM</span>
+      <span class="timewdh">6:00 AM</span>
+      <span class="timewdh">7:00 AM</span>
+    </div>
+    <div>
+      <span class="timewdh">8:00 AM</span>
+      <span class="timewdh">9:00 AM</span>
+      <span class="timewdh">10:00 AM</span>
+      <span class="timewdh">11:00 AM</span>
+    </div>
+    <div>
+      <span class="timewdh">12:00 PM</span>
+      <span class="timewdh">1:00 PM</span>
+      <span class="timewdh">2:00 PM</span>
+      <span class="timewdh">3:00 PM</span>
+    </div>
+    <div>
+      <span class="timewdh">4:00 PM</span>
+      <span class="timewdh">5:00 PM</span>
+      <span class="timewdh">6:00 PM</span>
+      <span class="timewdh">7:00 PM</span>
+    </div>
+    <div>
+      <span class="timewdh">8:00 PM</span>
+      <span class="timewdh">9:00 PM</span>
+      <span class="timewdh">10:00 PM</span>
+      <span class="timewdh">11:00 PM</span>
+    </div>
+  </div>
+  <!--  -->
+  <div class="__bDr" >
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Enable Lock Schedule
+      </label>
+    </div>
+    <div class="row input-icon-wrap">
+      <div class="col-2">
+        <label>Start</label>
+      </div>
+      <div class="col-10" style="display: flex;">
+        <input type="text" class="input-with-icon" id="start-time" [(ngModel)]="starttime"/>
+        <span class="input-icon" (click)="start()"><span class="fa fa-clock-o"></span></span>
+      </div>
+    </div>
+    <div class="row input-icon-wrap">
+      <div class="col-2">
+        <label>End</label>
+      </div>
+      <div class="col-10" style="display: flex;">
+        <input type="text" class="input-with-icon" id="end-time"  [(ngModel)]="endtime"/>
+        <span class="input-icon" (click)="end()"><span class="fa fa-clock-o"></span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span style="color: #000000;font-size: 10px;">Apply to:</span>
+      </div>
+      <div class="col-9 all-veh">
+        <div class="form-check" style="border-bottom: 2px solid #ccc;">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="toggle(this);">
+          <label class="form-check-label" for="flexCheckDefault">
+            All Vehicles
+          </label>
+        </div>
+        <div *ngFor="let item of vehicleValues">
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="{{item.itemval}}" id="flexCheckDefault"   [(ngModel)]="item.isSelected" (change)="getVehicles()">
+              <label class="form-check-label" for="flexCheckDefault">
+                  <img src="{{item.itemimg}}" alt="" width="16" />{{item.itemName}}
+              </label>
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" style="text-align: right;">
+        <button class="btngradient" (click)="updatelockschedule()">OK</button>
+        <button class="btngradient" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- LOCKSCHEDULE CODE  ENDS -->
+
+
+<!-- EDIT MESSAGES CODE STARTS-->
+<div class="bdr_wdh" *ngIf="data=='EM'">
+    <div class="namettl">
+      <span>Edit Messages</span>
+      <span style="float: right;" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+    <div class="__bDr">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="To Golfer">
+          <div class="pAd10__15" style="display: grid;">
+            <div style="display: flex;">
+              <div class="ewdh__200px">
+                <div>
+                  <select class="form-select selectInput">
+                    <option>Deutsch</option>
+                    <option>English</option>
+                    <option>Espanol</option>
+                    <option>Francais</option>
+                  </select>
+                </div>
+                <div class="__dg">
+                  <span>Return to clubhouse</span>
+                  <span>90 Degree Rule Today</span>
+                  <span>Cart path rule.</span>
+                  <span>Severe Weather Return.</span>
+                  <span>Return to cart path</span>
+                  <span>Too Close to green.</span>
+                  <span>Too Close to Tee</span>
+                  <span></span>
+                  <span>New Message</span>
+                </div>
+              </div>
+              <div class="__m5">
+                <div><input type="text" class="form-control InputBox" /></div>
+                <div class="__rtbox">
+                 <div><img src="../../../assets/imgs/mail.png" class="__mailimg" > </div>
+  
+                  <div class="__inputValue">
+                    <input type="text" class="form-control inputbgTrans">
+                  </div>
+                  <div class="__inputValue">
+                    <textarea class="form-control inputbgTrans" rows="5"></textarea>
+                    <!-- <input type="text" class="form-control inputbgheight" /> -->
+                  </div>
+                </div>
+                <div class="bg__yellow">
+                  <div class="yellow__inputValue">
+                    <input type="text" class="form-control inputbgTrans">
+                  </div>
+                  <div class="yellow__inputValue">
+                    <input type="text" class="form-control inputbgTrans">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="__pd">
+              <div class="__flw">
+                <button class="btngradient">Add</button>
+                <button class="btngradient">Delete</button>
+              </div>
+              <div class="__fltr" >
+                <button class="btngradient">OK</button>
+                <button class="btngradient">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="From Golfer">
+          <div class="pAd10__15" style="display: grid;">
+            <div style="display: flex;">
+              <div class="ewdh__200px">
+                <div>
+                  <select class="form-select selectInput">
+                    <option>Deutsch</option>
+                    <option>English</option>
+                    <option>Espanol</option>
+                    <option>Francais</option>
+                  </select>
+                </div>
+                <div class="__dg">
+                  <span>Bear</span>
+                  <span>Send Food Cart</span>
+                  <span>Yes</span>
+                  <span>Lost Club</span>
+                  <span>No</span>
+                  <span>Send Marshal</span>
+                </div>
+              </div>
+              <div class="__m5">
+                <div><input type="text" class="form-control InputBox" /></div>
+                <div class="__bgImg">
+                  <div class="__inputValue">
+                    <input type="text" class="form-control inputbgTrans">
+                  </div>
+                  <div class="__inputValue">
+                    <textarea class="form-control inputbgTrans" rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="__pd">
+              <div class="__flw">
+                <button class="btngradient">Add</button>
+                <button class="btngradient">Delete</button>
+              </div>
+              <div class="__fltr">
+                <button class="btngradient">OK</button>
+                <button class="btngradient">Cancel</button>
+              </div>
+            </div>
+  
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+</div>
+  
+<!-- EDIT MESSAGES CODE ENDS-->
+
+<!-- SEND MESSAGES CODE STARTS-->
+
+<div class="sabdr_wdh"  *ngIf="data=='SA'">
+    <div class="sanamettl">
+      <span>Send Messages</span>
+      <span class="sa__fr" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+    <div class="sa__bDr">
+      <div class="sapAd10__15">
+        <div>
+          <select class="form-select saselectInput">
+            <option>Custom</option>
+            <option>Return to clubhouse</option>
+            <option>90 Degree Rule Today</option>
+            <option>Cart path rule.</option>
+            <option>Severe Weather Return.</option>
+            <option>Return to cart path</option>
+            <option>Too Close to green.</option>
+            <option>Too Close to Tee</option>
+            <option>New Message</option>
+            <option>Return to Clubhouse</option>
+            <option>90 Degree Rule Today</option>
+            <option>Cart path rule.</option>
+            <option>Severe Weather Return.</option>
+            <option>Return to cart path</option>
+            <option>Too Close to green.</option>
+            <option>Too Close to Tee</option>
+            <option>New Message</option>
+          </select>
+        </div>
+        <div class="sa__df" >
+          <div class="sa__mar" >
+            <div class="sa__rtbox">
+              <div><img src="../../../assets/imgs/mail.png" class="sa__mailimg" > </div>
+  
+               <div class="sa__inputValue">
+                 <input type="text" class="form-control sainputbgTrans">
+               </div>
+               <div class="sa__inputValue">
+                 <textarea class="form-control sainputbgTrans" rows="5"></textarea>
+                 
+               </div>
+             </div>
+          </div>
+          <div class="wdh__200px">
+            <div class="sabg__yellow">
+              <div class="sayellow__inputValue">
+                <input type="text" class="form-control inputbgTrans">
+              </div>
+              <div class="sayellow__inputValue">
+                <input type="text" class="form-control inputbgTrans">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sa__pd">
+          <div class="sa__frwta">
+            <button class="sabtngradient">Send</button>
+            <button class="sabtngradient">Cancel</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+</div>
+  
+<!-- Send Messages CODE ENDS-->

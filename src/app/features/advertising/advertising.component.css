@@ -1,0 +1,219 @@
+/* add css */
+
+.__bdr {
+    border-right: 1px solid #808080;
+    box-shadow: 0px 2px 4px 0px #4e4d4d;
+}
+
+/* holes css */
+.coursetag {
+    background: #4caf50;
+    color: #ffffff;
+    padding: 3px 13px;
+    cursor: pointer;
+}
+.form-select{
+    line-height: 0.9;
+    font-size: 01em;
+}
+.form-select:focus {
+    border-color: #86b7fe00;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+}
+.coursedropdown {
+    background: #fff;
+    border: 1px solid #b1b1b1;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    margin-top: 5px;
+    height: calc(100vh - 187px);
+}
+.coursedata {
+    display: grid;
+    padding: 5px;
+    overflow: auto;
+    cursor: pointer;
+    height: calc(100vh - 240px);
+}
+.coursedata span:hover {
+    background: #4caf50;
+    color: #ffffff;
+    padding: 1px 3px;
+    cursor: pointer;
+}
+.coursedata span {
+    padding: 1px 3px;
+}
+.btmBtns {
+    background: #fff;
+    border: 1px solid #b1b1b1;
+    padding: 3px 7px;
+    margin: 7px 0;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+/* course holes css */
+
+/* ::ng-deep .mat-tab-label{
+    height: 25px !important;
+    min-width: 90px !important;
+}
+::ng-deep .mat-tab-label:hover {
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0));
+}
+::ng-deep .mat-tab-label-active:hover {
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0));
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: rgb(63 81 181 / 0%);
+} */
+::ng-deep .mat-tab-label {
+    height: 23px !important;
+    padding: 0 2px !important;
+    margin: 3px 0px 0px;
+    font-size: 11px !important;
+    min-width: 54px !important;
+    opacity: 1 !important;
+    color: #000000 !important;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #4caf50;
+} 
+::ng-deep .mat-tab-label-container{
+    background-color: #bfbfbf;
+  }
+.ptl7{
+    align-items: center;
+    padding: 7px;
+}
+.form-select{
+    line-height: 0.9;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.__fullscreen {
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(100vh - 120px);
+    overflow: auto;
+    background: #ffffff;
+    padding: 7px;
+}
+.__chfullscreenimg {
+    border: 1px solid #b3b3b3;
+    width: 197px;
+    height: 265px;
+}
+.chimgwdth27 {
+    width: 200px;
+    margin: 5px;
+}
+.__bannerimg {
+    border: 1px solid #b3b3b3;
+    width: 320px;
+    height: 49px;
+}
+.__greensimg {
+    border: 1px solid #b3b3b3;
+    width: 82px;
+    height: 280px;
+}
+.__protipsimg {
+    border: 1px solid #b3b3b3;
+    width: 159px;
+    height: 129px;
+}
+
+/* images show css */
+
+
+._search {
+    position: relative;
+    color: #c2c2c2;
+    font-size: 16px;
+}
+._search input {
+    height: 27px;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    /* border: 1px solid #3a5d83; */
+    border-radius: 3px;
+    font-size: 12px;
+    /* padding: 2px 27px 2px 7px; */
+}
+._searchclose {
+    position: absolute;
+    padding: 5px 10px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.__fullscreenimg {
+    border: 1px solid #b3b3b3;
+    width: 144px;
+    height: 215px;
+}
+.imgwdth27 {
+    width: 144px;
+    margin: 5px 2px;
+}
+.inputform {
+    padding: 0.2rem .2rem;
+    line-height: 0;
+    font-size: 0.7rem;
+}
+.bgGreen {
+    padding: 2px 3px;
+    background: #4caf50;
+    color: #fff;
+    font-size: 0.73rem;
+}
+.__flx {
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(100vh - 120px);
+    overflow: auto;
+    /* background: #ffffff; */
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 5px 0px #000;
+    transition: all 0.5s ease 0s;
+}
+.__qsnt {
+    background: #1e90ff;
+    color: #fff;
+    padding: 0px 8px;
+}
+.__Grey {
+    margin-left: auto;
+    background: #b5b5b5;
+    min-width: 6vw;
+    text-align: center;
+    padding: 0px 7px;
+    font-size: 0.8em;
+}
+.__addmore {
+    margin-left: auto;
+    background: #ffffff;
+    min-width: 6vw;
+    text-align: center;
+    padding: 0px 7px;
+    font-size: 0.8em;
+}
+.__fileshgt {
+    background: #ffffff;
+    height: 100px;
+    max-height: 250px;
+    overflow: auto;
+}
+.slectedfiles {
+    background: dodgerblue;
+    padding: 10px;
+    color: #fff;
+}

@@ -1,0 +1,950 @@
+
+<div *ngIf="RefVariable.variable=='C'">
+    <div class="pp-hd">
+        <div class="__fl"><label>Course Management</label></div>
+        <div class="__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+    <div class="pp-bd">
+        <!-- <div><span>Click the '+' to add a course.</span></div> -->
+        <div><span><b>Select Course:</b></span></div>
+        <div style="display: flex;height: 450px">
+            <div style="min-width: 146px;">
+                <div class="addCoursebg">
+                    <!-- <span class="addCourse">Northlands <i class="fa fa-times" aria-hidden="true"></i></span>
+                    <div style="margin-left: auto;" (click)="course()"><i class="fa fa-plus-square" aria-hidden="true"></i></div> -->
+                    <select class="form-select form-select-sm" [(ngModel)]="courseName"
+                        (ngModelChange)="onChange($event)">
+                        <option *ngFor="let data of coursesData.data?.courses" [value]="data.name">{{data.name}}
+                        </option>
+
+                    </select>
+                </div>
+                <div class="Course" *ngIf="addcourse">
+                    <div class="d-flex mb-3 align-items-center">
+                        <div class="col-5">
+                            <label for="inputPassword6" class="col-form-label">Course Name</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" class="form-control form-control-sm" value="Course 2">
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3 align-items-center">
+                        <div class="col-5">
+                            <label class="col-form-label">Hole Count</label>
+                        </div>
+                        <div class="col-7">
+                            <select class="form-select form-select-sm">
+                                <option>9</option>
+                                <option>18</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <button class="btngradient">OK</button>
+                        <button class="btngradient" (click)="close()">Cancel</button>
+                    </div>
+                </div>
+                <div>
+                    <table class="table table-bordered" style="text-align: center;margin-bottom: 0;">
+                        <thead>
+                            <tr>
+                                <th width="100">Hole</th>
+                                <th width="50">M Par</th>
+                                <th width="50">HcapM</th>
+                                <th width="50">L Par</th>
+                                <th width="50">HcapW</th>
+                                <th width="50">Blind</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="scrollit">
+                                        <table class="table msePointr table-striped ">
+                                            <tr *ngFor="let data of holes" [class.highlighted]="data.order === currentPosition" (click)="holeImages(data)">
+                                                <td width="100">{{data.name}}</td>
+                                                <td width="50">{{data.mensPar}}</td>
+                                                <td width="50">{{data.mensHandicap}}</td>
+                                                <td width="50">{{data.womensPar}}</td>
+                                                <td width="50">{{data.womensHandicap}}</td>
+                                                <td width="50">
+                                                    <span>
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                    </span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Holes: {{total}}</td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="courseimg">
+                    <!-- <div class="mapImag"><app-course></app-course></div> -->
+                    <div class="mapImag"><img id="myimage1" class="img-fluid" /></div>
+                </div>
+                <div class="d-flex protip" *ngIf="protip">          
+                    <div class="col-12" style="padding-left: 10px;">
+                        <div class="mb-1" *ngFor="let data of staticProtip">
+                            <label for="german">{{data.name}}</label>
+                            <input type="text" class="form-control  form-control-sm" [(ngModel)]="data.text" id="german">
+                        </div>
+                   <br>                   
+                    </div>
+                </div>
+                <div class="cartIcons">
+                    <div style="display: flex;">
+                        <div class="carticonbg" [ngClass]="{'active': srchst === 'F' }" title="Show Fairway">
+                            <img src="../../../assets/VTAG_Images/holeview.png" [name]="holeId"
+                                (click)="holePicture(holeId)" alt="" width="45px" height="45px" />
+                        </div>
+                        <div class="carticonbg" [ngClass]="{'active': srchst === 'G' }" title="Show Green">
+                            <img src="../../../assets/VTAG_Images/greenview.png" [name]="holeId"
+                                (click)="greenAreaPicture(holeId)" alt="" width="45px" height="45px" />
+                        </div>
+                        <div class="carticonbg" [ngClass]="{'active': srchst === 'P' }" title="Show Protip">
+                            <img src="../../../assets/VTAG_Images/protip.png" 
+                            (click)="showProtip()" alt="" width="45px" height="45px" />
+                        </div>
+                        <div class="carticonbg">
+                            <img src="../../../assets/VTAG_Images/Tees.png" alt="" width="45px" height="45px" />
+                        </div>
+                    </div>
+                    <div style="margin-left: auto;">
+                        <button class="btngradient">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;padding: 5px 8px;">
+        <div>
+            <button class="btngradient" (click)="courseRules()">Course Rules</button>
+            <button class="btngradient" (click)="welcomeScreen()">Welcome Screens</button>
+            <button class="btngradient" (click)="scoreCard()">Scorecard</button>
+        </div>
+        <div style="margin-left: auto;">
+            <button class="btngradient">OK</button>
+            <button class="btngradient">Cancel</button>
+        </div>
+    </div>
+    <!-- CourseRules -->
+    <div class="CourseRules" *ngIf="courserules">
+        <div *ngFor="let i of staicCourseRules">
+            <div class="mb-1">
+                <label for="chinese">{{i.name}}</label>
+                <input type="text" [(ngModel)]="i.text" class="form-control form-control-sm" id="chinese">
+            </div>
+        </div>
+
+        <div class="mt-3" style="text-align: right;">
+            <button class="btngradient" (click)="ok()">OK</button>
+        </div>
+    </div>
+    <!-- welcomescreen -->
+    <div class="d-flex welcomescreen" *ngIf="welcomescreen">
+        <div class="col-4" style="border-right: 1px solid #7c7c7c;">
+            <div class="imgHeight">
+                <img id="myimage" class="img-fluid" />
+            </div>
+            <div class="mt-3 d-flex">
+                <button class="btngradient">Add</button>
+                <button class="btngradient">Delete</button>
+            </div>
+        </div>
+        <div class="col-8" style="padding-left: 10px;">
+            <div class="mb-1" *ngFor="let data of staicWelcomeData">
+                <label for="german">{{data.language}}</label>
+                <input type="text" class="form-control  form-control-sm" [(ngModel)]="data.text" id="german">
+            </div>
+            <div class="mt-3" style="text-align: right;">
+                <button class="btngradient" (click)="welcomeOk()">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- scorecard -->
+    <div class="scorecard" *ngIf="scorecard">
+        <div class="imgHeight">
+            <div class="clrbdr">
+                <div class="d-flex">
+                    <div class="col-4">Name</div>
+                    <div class="col-4">Foreground</div>
+                    <div class="col-4">Background</div>
+                </div>
+                <div>
+                    <label>Mens Tees</label>
+                    <div class="d-flex">
+                        <div class="col-4">
+                            <input type="text" class="form-control form-control-sm" value="M Tee 1" />
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select form-select-sm">
+                                <option style="background-color: #ff0000;color: #000000;" selected>#FF0000</option>
+                                <option style="background-color: #FFFFFF;color: #000000;">#FFFFFF</option>
+                                <option style="background-color: #000000;color: #ffffff;">#000000</option>
+                                <option style="background-color: #00FF00;color: #000000;">#00FF00</option>
+                                <option style="background-color: #FFFF00;color: #000000;">#FFFF00</option>
+                                <option style="background-color: #FFA500;color: #000000;">#FFA500</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select form-select-sm">
+                                <option style="background-color: #ff0000;color: #000000;" selected>#FF0000</option>
+                                <option style="background-color: #FFFFFF;color: #000000;">#FFFFFF</option>
+                                <option style="background-color: #000000;color: #ffffff;">#000000</option>
+                                <option style="background-color: #00FF00;color: #000000;">#00FF00</option>
+                                <option style="background-color: #FFFF00;color: #000000;">#FFFF00</option>
+                                <option style="background-color: #FFA500;color: #000000;">#FFA500</option>
+                            </select>
+                            <!-- <div class="select-editable">
+                                    <select class="form-select form-select-sm" onchange="this.nextElementSibling.value=this.value">
+                                        <option style="background-color: #ff0000;color: #000000;">#FF0000</option>
+                                        <option style="background-color: #FFFFFF;color: #000000;">#FFFFFF</option>
+                                        <option style="background-color: #000000;color: #ffffff;">#000000</option>
+                                        <option style="background-color: #00FF00;color: #000000;">#00FF00</option>
+                                        <option style="background-color: #FFFF00;color: #000000;">#FFFF00</option>
+                                        <option style="background-color: #FFA500;color: #000000;">#FFA500</option>
+                                    </select>
+                                    <input type="text" name="format" value="" class="form-control form-control-sm"/>
+                                </div> -->
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btngradient">Add</button>
+                        <button class="btngradient">Remove</button>
+                    </div>
+                </div>
+                <div>
+                    <label>Womens Tees</label>
+                    <div class="d-flex">
+                        <div class="col-4">
+                            <input type="text" class="form-control form-control-sm" value="M Tee 1" />
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select form-select-sm">
+                                <option style="background-color: #ff0000;color: #000000;" selected>#FF0000</option>
+                                <option style="background-color: #FFFFFF;color: #000000;">#FFFFFF</option>
+                                <option style="background-color: #000000;color: #ffffff;">#000000</option>
+                                <option style="background-color: #00FF00;color: #000000;">#00FF00</option>
+                                <option style="background-color: #FFFF00;color: #000000;">#FFFF00</option>
+                                <option style="background-color: #FFA500;color: #000000;">#FFA500</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select form-select-sm">
+                                <option style="background-color: #ff0000;color: #000000;" selected>#FF0000</option>
+                                <option style="background-color: #FFFFFF;color: #000000;">#FFFFFF</option>
+                                <option style="background-color: #000000;color: #ffffff;">#000000</option>
+                                <option style="background-color: #00FF00;color: #000000;">#00FF00</option>
+                                <option style="background-color: #FFFF00;color: #000000;">#FFFF00</option>
+                                <option style="background-color: #FFA500;color: #000000;">#FFA500</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btngradient">Add</button>
+                        <button class="btngradient">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="checkbox" class="form-check-input" /> <label> Email Scorecards to Club House</label>
+                <div class="d-flex pl_20">
+                    <label>Email Address:</label> <input type="text" class="form-control form-control-sm"
+                        style="width: 50%;">
+                    <button class="btngradient">Test</button>
+                </div>
+            </div>
+            <div>
+                <label>Header</label>
+                <div>
+                    <img style="height: 75px;" class="img-fluid" src="../../../assets/imgs/world_topo.jpg" alt="" />
+                </div>
+                <div style="text-align: right;">
+                    <button class="btngradient">Browse</button>
+                    <button class="btngradient">Delete</button>
+                </div>
+            </div>
+            <div>
+                <label>Header</label>
+                <div>
+                    <img style="height: 75px;" class="img-fluid" src="../../../assets/imgs/world_topo.jpg" alt="" />
+                </div>
+                <div style="text-align: right;">
+                    <button class="btngradient">Browse</button>
+                    <button class="btngradient">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="btngradient" (click)="scoreBoardOk()">OK</button>
+        </div>
+    </div>
+
+  </div>
+<!-- PROTIP -->
+
+<!-- <div class="CourseRules" *ngIf="protip">
+    <div *ngFor="let i of staticProtip">
+        <div class="mb-1">
+            <label for="protip">{{i.name}}</label>
+            <input type="text" [(ngModel)]="i.text" class="form-control form-control-sm" id="protip">
+        </div>
+    </div>
+
+    <div class="mt-3" style="text-align: right;">
+        <button class="btngradient" (click)="protipOk()">OK</button>
+    </div>
+</div> -->
+  
+
+
+
+
+  <!-- PIN PLACEMENT -->
+
+
+  <div style="min-width: 20vw;" *ngIf="RefVariable.variable=='P'">
+    <div class="Ppp-hd">
+        <div class="P__fl"><label>Pin Placement</label></div>
+        <div class="P__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+
+    <div class="Ppp-bd">
+        <div style="display: flex;">
+            <div class="P_course">
+                <label>Course</label>
+                <select class="form-select PdDown" [(ngModel)]="courseName"
+                (ngModelChange)="onChange($event)">
+                    <option *ngFor="let data of coursesData.data?.courses">{{data.name}}</option>
+                </select>
+            </div>
+            <div class="P__schedule">
+                <label>Schedule</label>
+                <select class="form-select PdDown" #mySelect (change)="dayCall(mySelect.value)">
+                    <option *ngFor="let i of schedule"  [value]="i.value">{{i.name}}</option>
+                    <!-- <option >1 day</option> -->
+                    <!-- <option>2 days</option>
+                    <option>3 days</option>
+                    <option>4 days</option>
+                    <option>5 days</option>
+                    <option>6 days</option>
+                    <option>7 days</option>
+                    <option>8 days</option>
+                    <option>9 days</option> -->
+                </select>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="Pmldflx">
+                <div class="Ppt10">Today</div>
+                <div><i class="fa fa-arrow-circle-left" (click)="onPrev()" aria-hidden="true"></i></div>
+                <div class="Pwdt_7" *ngIf="items>0">Day {{current}}</div>
+                <div class="Pwdt_7" *ngIf="items==0">None</div>
+                <div><i class="fa fa-arrow-circle-right" (click)="onNext()" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="Pcoursenum">
+                <div class="countbg"  *ngFor="let data of holes" [class.highlighted]="data.order === currentPosition" (click)="pinHoleImages(data)">{{data.name}}</div>
+                <!-- <div class="countbg">2</div>
+                <div class="countbg">3</div>
+                <div class="countbg">4</div>
+                <div class="countbg">5</div>
+                <div class="countbg">6</div>
+                <div class="countbg">7</div>
+                <div class="countbg">8</div>
+                <div class="countbg">9</div>
+                <div class="countbg">10</div>
+                <div class="countbg">11</div>
+                <div class="countbg">12</div>
+                <div class="countbg">13</div>
+                <div class="countbg">14</div>
+                <div class="countbg">15</div>
+                <div class="countbg">16</div>
+                <div class="countbg">17</div>
+                <div class="countbg">18</div> -->
+            </div>
+            <div class="P__courseimg">
+                <!-- <img src="../../../assets/imgs/cartimg.png" alt="" /> -->
+                <img id="myimage1" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+    <div class="col-12 Pprl5_15">
+        <div class="Pfleft">
+            <button class="Pbtngradient" (click)="resetpin()">Reset</button> 
+        </div>
+        <div class="Ptxtrt">
+            <button class="Pbtngradient">OK</button>
+            <button class="Pbtngradient">Cancel</button>  
+        </div>
+    </div>
+</div>
+
+
+<!-- PASE COMPONENT -->
+
+<div style="min-width: 30vw;" *ngIf="RefVariable.variable=='PC'">
+    <div class="PCpp-hd" >
+        <div class="PC__fl"><label>Pace Settings</label></div>
+        <div class="PC__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+
+    <div class="PCpp-bd">
+        <div class="d-flex">
+            <!-- <span class="PCcoursebtn">Northlands</span> -->
+            <div *ngFor="let item of TotalCourses">
+                <span class="PCcoursebtn" (click)="onChange(item.name)">{{item.name}}</span>
+            </div>
+        </div>
+        <div>
+            <table  class="table table-bordered PCtable" style="text-align: center;margin-bottom: 0;">
+                <thead>
+                    <tr>
+                        <th width="100">Hole</th>
+                        <th width="150">Pace (Minutes)</th>
+                        <th width="50">Tee</th>
+                        <th width="50">Green</th>
+                    </tr>
+                </thead>
+                <tbody class="PCtblbdy">
+                    <tr>
+                        <td colspan="5">
+                            <div class="PCscrollit">
+                                <table class="table table-striped ">
+                                    <tr *ngFor="let m of holes">
+                                        <td width="100">{{m.name}}</td>
+                                        <td width="150"> <input type="number" class="size-12" value="{{m.popMinutes}}" min="0" max="100" step="1"></td>
+                                        <td width="50"><i *ngIf="m.teeId==null" class="fa fa-times" aria-hidden="true"></i><i *ngIf="m.teeId!=null" class="fa fa-check" aria-hidden="true"></i></td>
+                                        <td width="50"><i *ngIf="m.greenId==null" class="fa fa-times" aria-hidden="true"></i><i *ngIf="m.greenId!=null" class="fa fa-check" aria-hidden="true"></i> </td>
+                                    </tr>
+                                   
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Holes: {{holes.length}}</td>
+                        <td>Total time: {{CoursetotalTime}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="PCplr5_tb3">
+            <form [formGroup]="paceFormGroup">
+            <div class="form-check checking">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkpacealert"/>
+                <label>Enable Pace of Play Alerts</label>
+            </div>
+            <div class="form-check checking">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkamberalert"/>
+                <label>Amber Alert shown on Touch when</label>
+                <input type="number" class="size-12" value="" min="0" max="100" step="1" formControlName="amberalertmints"/>
+                <span>minutes behind</span>
+                <div class="form-check checking">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkamberaudible"/>
+                    <label>Amber audible alert</label>
+                </div>
+            </div>
+            <div class="form-check checking">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkredalert"/>
+                <label>Red Alert shown on Touch when</label>
+                <input type="number" class="size-12" value="" min="0" max="100" step="1" formControlName="redalertmints"/>
+                <span>minutes behind</span>
+                <div class="form-check checking">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkredaudible"/>
+                    <label>Red audible alert</label>
+                </div>
+            </div>
+            <div class="form-check checking">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkpacemessage"/>
+                <label>Player pace warning message when</label>
+                <input type="number" class="size-12" placeholder="" min="0" max="100" step="1" formControlName="pacemessagemints"/>
+                <span>minutes behind</span>
+            </div>
+            <div class="form-check checking">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkemail"/>
+                <label> Email </label>
+                <input type="email" class="size-12" value="" min="0" max="100" step="1" formControlName="txtemail"/>
+                <span>when</span>
+                <input type="number" class="size-12" value="" min="0" max="100" step="1" formControlName="emailmints"/>
+                <span>minutes behind</span>
+            </div>
+        </form>
+        </div>
+    </div>
+    <div class="col-12 PCprl5_15">
+        <div class="PCfleft">
+            <button class="PCbtngradient">Select</button> 
+            <button class="PCbtngradient">Add Zone</button> 
+        </div>
+        <div class="PCtxtrt">
+            <button class="PCbtngradient">OK</button>
+            <button class="PCbtngradient">Cancel</button>            
+        </div>
+    </div>
+</div>
+
+
+<!-- FB EDITOR -->
+
+<div style="min-width: 20vw;" *ngIf="RefVariable.variable=='FB'">
+    <div class="FBpp-hd">
+        <div class="FB__fl"><label>Food and Beverage Editor</label></div>
+        <div class="FB__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+
+    <div class="FBpp-bd">
+        <div class="FBpb_17flx">
+            <span>Language for FBEditor: </span>
+            <select class="form-select form-select-sm" style="width: 15%;">
+                <option>English</option>
+                <option>Deutsch</option>
+                <option>Espanol</option>
+                <option>Francais</option>
+            </select>
+        </div>
+        <div style="display: flex;">
+            <span class="FBLocations">F&B Hours and Locations: </span>
+            <table class="table table-bordered FBtable" >
+                <thead class="FBthead">
+                    <tr>
+                        <td colspan="2">Monday</td>
+                        <td colspan="2">Tuesday</td>
+                        <td colspan="2">Wednesday</td>
+                        <td colspan="2">Thursday</td>
+                        <td colspan="2">Friday</td>
+                        <td colspan="2">Saturday</td>
+                        <td colspan="2">Sunday</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </thead>
+                <tbody class="FBtbody">
+                    <tr>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td colspan="2">Holes</td>
+                    </tr>
+                    <tr>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>01:00 AM</td>
+                        <td>Order Locations</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="FBbeverageht">
+            <div style="display: flex;">
+                <div class="FBNewaddPage"><input type="text" value="Food"> <i class="fa fa-times" aria-hidden="true"></i></div>
+                <div class="FBNewaddPage"><input type="text" value="Food">  <i class="fa fa-times" aria-hidden="true"></i></div>
+                <div class="FBNewaddPage"><input type="text" value="Food">  <i class="fa fa-times" aria-hidden="true"></i></div>
+                <div class="FBnewPage"><i class="fa fa-plus" aria-hidden="true"></i> <span> NEW PAGE</span></div>
+            </div>
+            <div class="fbitemoverflow">
+                <div class="fbitem">
+                    <div class="fbimgtxt">
+                        <div><img class="fbImg" src="../../../assets/imgs/world_topo.jpg" /></div>
+                       
+                        <div><span>1/2 pound of USDA Certified Angus Beef, with lettuce, tomato, bacon, cheddar.</span></div>     
+                    </div>       
+                    <div class="FBcloseitems">
+                        <div><i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+                        <div>
+                            <button class="FBbtngradient" style="margin-bottom: 4px;">Up</button>
+                            <button class="FBbtngradient">Down</button>
+                        </div>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault"> Availale</label>
+                            </div>
+                        </div>
+                    </div>      
+                </div>                
+            </div> 
+            <div class="FBtxtrt">
+                <button class="FBbtngradient" style="margin-bottom: 4px;">Add new item</button>         
+            </div> 
+        </div>
+    </div>
+    <div class="col-12 FBp_7">
+        <div class="FBtxtrt">
+            <button class="FBbtngradient">Save</button>            
+        </div>
+    </div>
+</div>
+
+
+<!-- ALLERT SETTINGS -->
+
+<div class="Abdr_wdh" *ngIf="RefVariable.variable=='AS'">
+    <div class="Anamettl">
+      <span>Alert Settings</span>
+      <span style="float: right;" (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+    <div>
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Violations">
+          <div class="ApAd10__15" style="display: grid;">
+            <div>
+                <div>
+                    <select class="form-select AselectInput">
+                        <option>TemperViolation</option>
+                        <option>IdleViolation</option>
+                        <option>PowerViolation</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault"> Buzzer on Tag
+                    </label>
+                </div>
+                <div class="form-check" (click)="alerTs()">
+                    <input class="form-check-input" type="checkbox" value="" id="alerts">
+                    <label class="form-check-label" for="alerts"> Alerts</label>
+                </div>
+                <!--  -->
+                <div class="Aalet_toggle" *ngIf="alertsselect">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault3">  Heigh Priority</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2"> Medium Priority</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault3"> Low Priority</label>
+                    </div>
+                    <div class="form-check" class="A__plmh">
+                        <input class="form-check-input" type="checkbox" value="" id="application">
+                        <label class="form-check-label" for="application">Alaram in Application</label>
+                    </div>
+                    <div class="form-check" class="A__pldf">
+                        <input class="form-check-input" type="checkbox" value="" id="email">
+                        <label class="form-check-label" for="email" style="display: flex;">Email: <input class="A__w70" type="text" class="formctrl form-control" style="height: 1.3rem;width: 10vw;" /></label>
+                        
+                    </div>
+                </div>
+                <!--  -->
+                <div class="row">
+                    <div class="col-3">
+                        <span style="color: #000000;font-size: 10px;">Apply to:</span>
+                    </div>
+                    <div class="col-9 Aall-veh">
+                        <div class="form-check" style="border-bottom: 2px solid #ccc;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="toggle(this);">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                All Vehicles
+                            </label>
+                        </div>
+                
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/player_badge.png" alt="" width="16" /> Players
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/walker_badge.png" alt="" width="16" /> Walkers
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/member_badge.png" alt="" width="16" /> Members
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/sppriv_badge.png" alt="" width="16" /> Special Privilega
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/marshal_badge.png" alt="" width="16" /> Player Assistants
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/utility_badge.png" alt="" width="16" /> Utility Vehicles
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/fb_badge.png" alt="" width="16" /> Food and Beverage
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/turf_badge.png" alt="" width="16" /> Turf Equipment
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <img src="../../../assets/VTAG_Images/shuttle_badge.png" alt="" width="16" /> Shuttles
+                            </label>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="enable">
+                    <label class="form-check-label" for="enable"> Enable</label>
+                </div>
+            </div>
+            <div class="A__pd">
+              <div class="A__fltr" >
+                <button class="Abtngradient">OK</button>
+                <button class="Abtngradient">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Sounds">
+            <div style="padding: 1.5rem 1rem;">
+                <div>
+                    <label>Incoming Message:</label>
+                    <div style="display: flex;align-items: center;">
+                        <div style="width: 100%;">
+                            <select class="form-select AselectInput">
+                                <option>TemperViolation</option>
+                                <option>IdleViolation</option>
+                                <option>PowerViolation</option>
+                            </select>
+                        </div>
+                        <div class="Alisten">
+                            <span>Listen</span>
+                        </div>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="repeat"/>
+                        <label class="form-check-label ArepeAt"  for="repeat">Repeat</label>
+                    </div>
+                </div>
+                <div class="Apt6">
+                    <label>High-priorty alert:</label>
+                    <div style="display: flex;align-items: center;">
+                        <div style="width: 100%;">
+                            <select class="form-select AselectInput">
+                                <option>TemperViolation</option>
+                                <option>IdleViolation</option>
+                                <option>PowerViolation</option>
+                            </select>
+                        </div>
+                        <div class="Alisten">
+                            <span>Listen</span>
+                        </div>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="repeat"/>
+                        <label class="form-check-label ArepeAt"  for="repeat">Repeat</label>
+                    </div>
+                </div>                
+            </div>
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  
+  
+  <!-- BATTERY LEVELS -->
+
+  <div style="min-width: 20vw;" *ngIf="RefVariable =='BL'">
+    <div class="Bpp-hd">
+      <div class="B__fl"><label>Battery Level Settings</label></div>
+      <div class="B__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="Bpp-bd">
+        <div style="display: flex;padding-bottom: 20px;">
+            <div class="col-6">
+                <div style="width: 4vw;">Battery Voltages</div>
+            </div>
+            <div class="col-6">
+                <div style="width: 4vw;">Alert Levels</div>    
+            </div>            
+        </div>
+        <div *ngFor="let item of optionvalues;let i=index">
+            <div style="display: flex;padding-bottom: 20px;">   
+                <div class="col-2">{{item.Label}}v</div>  
+                <div class="col-10" style="text-align: left;"> 
+                    <!-- <input type="range" class="form-range"> -->  
+                    <ngx-slider (userChange)="changeVal(item.minValue,item.maxValue,i)"  [(value)]="item.minValue" [(highValue)]="item.maxValue" [options]="item.Options" id="slider{{i+1}}"></ngx-slider>
+               </div>
+    
+            </div>
+    
+        </div>
+        <div class="col-12" style="text-align: right;">
+            <button class="btngradient" (click)="submitBatterylevels()">OK</button>
+            <button class="btngradient" (click)="CancelBatterylevels()">Cancel</button>
+        </div>
+    </div>
+  </div>
+
+  <!-- GENERAL -->
+
+  <div *ngIf="RefVariable.variable=='GS'">
+    <div class="Gpp-hd">
+      <div class="G__fl"><label>General Settings</label></div>
+      <div class="G__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="Gpp-bd">
+        <div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Use Metric for distances
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Use Small labels on the map
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Separate Members Group
+                </label>
+            </div>            
+        </div>
+        <div class="col-12" style="text-align: right;">
+            <button class="Gbtngradient">OK</button>
+            <button class="Gbtngradient">Cancel</button>
+        </div>
+    </div>
+  </div>
+
+  <!-- ON COMPONENT -->
+
+  <div class="Opp-lvh" *ngIf="RefVariable.variable=='ON'">
+    <div class="Opp-hd">
+      <div class="O__fl"><div class="oNgrenn"></div><label>Tag On</label></div>
+      <div class="O__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="Opp-bd">
+      <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-msg">Are you sure you want to turn this Tag on?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-no">{{RefVariable.cartdetails[0].name}}</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-msg">Are you sure you want to turn this Tags on?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-no">{{RefVariable.cartdetails.length}} tags have been selected</label >
+    </div>
+  
+    <div class="Opp-ft">
+      <div>
+        <label class="Opp-Ybtn"  (click)="TagOn()"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt=""/> Yes</label>
+        <label class="Opp-Nbtn" (click)="tagClose()"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFF MONITERED -->
+
+  <div class="Opp-lvh" *ngIf="RefVariable.variable=='OM'">
+    <div class="Opp-hd">
+      <div class="O__fl"><div class="oORNG"></div><label>Tag off but monitored</label></div>
+      <div class="O__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="Opp-bd">
+      <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-msg">Are you sure you wnat to turn this Tag off and continue to monitor it?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-no">{{RefVariable.cartdetails[0].name}}</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-msg">Are you sure you wnat to turn this Tags off and continue to monitor it?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-no">{{RefVariable.cartdetails.length}} tags have been selected</label>
+    </div>
+  
+    <div class="Opp-ft">
+      <div>
+        <label class="Opp-Ybtn" (click)="TagOffMonitored()"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt=""  /> Yes</label>
+        <label class="Opp-Nbtn" (click)="tagClose()"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFF COMPONENT -->
+
+ 
+  <div class="Opp-lvh" *ngIf="RefVariable.variable=='OF'">
+    <div class="Opp-hd">
+      <div class="O__fl"><div class="oRED"></div><label>Tag Off</label></div>
+      <div class="O__fr"><i class="fa fa-times" aria-hidden="true" (click)="close()"></i></div>
+    </div>
+  
+    <div class="Opp-bd">
+        <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-msg">Are you sure you want to turn this Tag off?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length == 1" class="Opp-no">{{RefVariable.cartdetails[0].name}}</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-msg">Are you sure you want to turn this Tags off?</label>
+      <label *ngIf="this.RefVariable.cartdetails.length > 1" class="Opp-no">{{RefVariable.cartdetails.length}} tags have been selected</label >
+    </div>
+  
+    <div class="Opp-ft">
+      <div>
+        <label class="Opp-Ybtn" (click)="TagOff()"><img style="width: 15px;" src="../../../assets/VTAG_Images/tick.png" alt=""  /> Yes</label>
+        <label class="Opp-Nbtn" (click)="tagClose()"><img style="width: 15px;" src="../../../assets/VTAG_Images/clear.png" alt="" /> No</label>
+      </div>
+    </div>
+  </div>
+
+
+
+ 

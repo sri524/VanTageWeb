@@ -1,0 +1,168 @@
+<div class="warn-icon click"  (click)="openRytPanel()">
+    <img src="../../../assets/VTAG_Images/warningy.png" width="40px" alt="">
+</div> 
+
+<div class="rgt-pnl" *ngIf="rytPanel">
+    <div class="__fltr">
+        <div class="flt-bx">
+            <span>Filter:</span>
+            <span>
+                <!-- <select class="form-select">
+                    <option>All(05)</option>
+                </select> -->
+            </span>
+            <span class="flt-arw click"><i class="fa fa-chevron-right" aria-hidden="true" (click)="close()"></i></span>
+        </div>
+        <div class="flt-cal">
+            <!-- <span>Wednesday, May 05, 2021 </span><span><img src="../../../assets/VTAG_Images/calendar-icon.png" alt="" width="18px"></span> -->
+            <mat-form-field appearance="fill" >
+                <input matInput [matDatepicker]="picker" class="matinput" (dateChange)="onChange($event)"  [(ngModel)]="selectedDate" >
+                  
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+
+
+    <div *ngIf="notificationData.length !=0;else noItems">
+    <div *ngFor="let item of notificationData; let i=index" (mouseenter)="showNotifyImg[i] = !showNotifyImg[i]" (mouseleave)="showNotifyImg[i] = !showNotifyImg[i]">
+        <div class="restricted-bx"  [ngClass]=" {'clshigh':item.priority=='HIGH','clslow' :item.priority=='LOW','clsrnormal':item.priority=='NORMAL'}">
+            <div class="rstd-bx">
+                <div class="__mr-at" >
+                <span class="__pr5"> 
+                      <img src="../../../assets/VTAG_Images/info.png" *ngIf="item.priority=='LOW'" style="width: 20px;">
+                    <img src="../../../assets/VTAG_Images/severe.png" *ngIf="item.priority=='HIGH'" style="width: 20px;">
+                    <img src="../../../assets/VTAG_Images/warning.png" *ngIf="item.priority=='NORMAL'" style="width: 20px;"></span>
+                <span class="rstd-cart-no">{{item.tagName}}</span>
+                </div>
+                <div>
+                <span class="rstd-chat" style="display: none;" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+                <span class="rstd-time">{{getTimeStamp(item.createTime)}}</span>
+                <span class="icon click" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></span>
+                <div *ngIf="this.showNotifyImg[i]" style="position:absolute">
+                    <span class="__pr5" *ngIf="item.acknowledgedTime == null"><img src="../../../assets/VTAG_Images/done.png" width="18px" alt=""></span>
+                    <span class="__pr5" *ngIf="item.acknowledgedTime != null"><img src="../../../assets/VTAG_Images/notification - details.png" width="18px" alt=""></span>
+                    <span class="__pr5" (click)="showtrailzone(item)"><img src="../../../assets/VTAG_Images/notification - go to tag.png" width="18px" alt=""></span>
+                </div>
+                </div>
+            </div>
+            <div class="warn-msg">
+                <span>{{item.summary}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <ng-template #noItems>
+        <div colspan="9" style="text-align: center;font-size: 12px;margin-top: -32px;color: black;">No Notifications Available!</div>
+    </ng-template>
+
+ <!-- <div class="restricted-bx">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">01</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon click"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Entered Restricted Zone</span>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="restricted-bx">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">02</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Entered Restricted Zone</span>
+        </div>
+    </div>
+
+    <div class="restricted-bx">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">07</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Entered Restricted Zone</span>
+        </div>
+    </div>
+
+    <div class="restricted-bx-R">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">15</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Entered 18th Green</span>
+        </div>
+    </div>
+
+
+    <div class="restricted-bx-R">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">27</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Entered 7th - Bunker 1a</span>
+        </div>
+    </div>
+
+    
+    <div class="restricted-bx-R" style="border-bottom: 7px solid rgb(55, 160, 196) !important;">
+        <div class="rstd-bx">
+            <div class="__mr-at" >
+            <span class="__pr5"><img src="../../../assets/imgs/cartgreen.png" width="18px" alt=""></span>
+            <span class="rstd-cart-no">27</span>
+            </div>
+            <div>
+            <span class="rstd-chat" ><img src="../../../assets/VTAG_Images/chat.png" width="18px" alt=""></span>
+            <span class="rstd-time">10:30am</span>
+            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="warn-msg">
+            <span>Message Received</span>
+        </div>
+    </div> -->
+
+
+
+</div>

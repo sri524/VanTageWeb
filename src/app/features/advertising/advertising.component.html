@@ -1,0 +1,277 @@
+<div class="row" style="padding-top: 48px;margin: 0;">
+    <div class="col-2 __bdr">
+        <!-- <app-holes></app-holes> -->
+        <div>
+            <select class="form-select">
+                <option>CA - BC - Clint</option>
+                <option>CA - BC - Engineering Test</option>
+                <option>CA - BC - Northlands Advertising Demo</option>
+                <option>CA - BC - Vantage Creek Landscape</option>
+                <option>CA - BC - Vantage Creek Portrait</option>
+                <option>DSG Factory Floor</option>
+            </select>
+        </div>
+        <div style="margin-top: 5px;">
+            <select class="form-select">
+                <option>Course 2</option>
+                <option>Course 1</option>        
+            </select>
+        </div>
+        <div class="coursedropdown">
+            <div class="coursetag" (click)="course()">
+              <span>Course 1</span>  
+            </div>
+
+            <div class="coursedata" *ngIf="coursetag">
+                <span>General</span>
+                <span>Special Banners</span>
+                <span>Hole 1</span>
+                <span>Hole 2</span>
+                <span>Hole 3</span>
+                <span>Hole 4</span>
+                <span>Hole 5</span>
+                <span>Hole 6</span>
+                <span>Hole 7</span>
+                <span>Hole 8</span>
+                <span>Hole 9</span>
+                <span>Hole 10</span>
+                <span>Hole 11</span>
+                <span>Hole 12</span>
+                <span>Hole 13</span>
+                <span>Hole 14</span>
+                <span>Hole 15</span>
+                <span>Hole 16</span>
+                <span>Hole 17</span>
+                <span>Hole 18</span>
+            </div>
+        </div>
+        <div class="btmBtns" (click)="addevent('AE')">
+            <span>Add Event</span>
+        </div>
+        <div class="btmBtns" (click)="impressionsreport('IR')">
+            <span>Impressions Report</span>
+        </div>
+    </div>
+    <div class="col-7 __bdr">
+        <!-- <app-courseholes></app-courseholes> -->
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Full Screens"> 
+                <div class="d-flex ptl7">
+                    <div>
+                        <label>Timeout after</label>                
+                    </div>
+                    <div style="padding-left: 5px;width: 150px;">
+                        <select class="form-select">
+                            <option>Never</option>
+                            <option>1s</option>
+                            <option>2s</option>
+                            <option>3s</option>
+                            <option>5s</option>
+                            <option>10s</option>
+                            <option>15s</option>
+                            <option>20s</option>
+                            <option>30s</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="__fullscreen">
+                    <div class="chimgwdth27">
+                        <div><span>Tee Out</span></div>
+                        <div  class="__chfullscreenimg"></div>
+                    </div>
+                    <div class="chimgwdth27">
+                        <div><span>Green Out</span></div>
+                        <div class="__chfullscreenimg"></div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Banners">
+                <div class="d-flex ptl7">
+                    <div>
+                        <label>Change every</label>                
+                    </div>
+                    <div style="padding-left: 5px;width: 150px;">
+                        <select class="form-select">
+                            <option>1s</option>
+                            <option>2s</option>
+                            <option>3s</option>
+                            <option>5s</option>
+                            <option>10s</option>
+                            <option>15s</option>
+                            <option>20s</option>
+                            <option>30s</option>
+                            <option>45s</option>
+                            <option>60s</option>
+                            <option>120s</option>
+                        </select>
+                    </div>
+                </div> 
+                <div class="__fullscreen">
+                    <div style="margin: 5px;">
+                        <!-- <div><span>Tee Out</span></div> -->
+                        <div  class="__bannerimg"></div>
+                    </div>
+                </div> 
+            </mat-tab>
+            <mat-tab label="Greens"> 
+                <div class="d-flex ptl7">
+                    <div>
+                        <label>Timeout after</label>                
+                    </div>
+                    <div style="padding-left: 5px;width: 150px;">
+                        <select class="form-select">
+                            <option>1s</option>
+                            <option>2s</option>
+                            <option>3s</option>
+                            <option>5s</option>
+                            <option>10s</option>
+                            <option>15s</option>
+                            <option>20s</option>
+                            <option>30s</option>
+                            <option>45s</option>
+                            <option>60s</option>
+                            <option>120s</option>
+                        </select>
+                    </div>
+                </div> 
+                <div class="__fullscreen">
+                    <div style="margin: 5px;">
+                        <!-- <div><span>Tee Out</span></div> -->
+                        <div  class="__greensimg"></div>
+                    </div>
+                </div> 
+            </mat-tab>
+            <mat-tab label="Protips">
+                <div class="d-flex ptl7">
+                    <div>
+                        <label>Timeout after</label>                
+                    </div>
+                    <div style="padding-left: 5px;width: 150px;">
+                        <select class="form-select">
+                            <option>1s</option>
+                            <option>2s</option>
+                            <option>3s</option>
+                            <option>5s</option>
+                            <option>10s</option>
+                            <option>15s</option>
+                            <option>20s</option>
+                            <option>30s</option>
+                            <option>45s</option>
+                            <option>60s</option>
+                            <option>120s</option>
+                        </select>
+                    </div>
+                </div> 
+                <div class="__fullscreen">
+                    <div style="margin: 5px;">
+                        <!-- <div><span>Tee Out</span></div> -->
+                        <div  class="__protipsimg"></div>
+                    </div>
+                </div> 
+            </mat-tab>
+          </mat-tab-group>
+    </div>
+    <div class="col-3">
+        <!-- <app-imageshow></app-imageshow> -->
+        <div>
+            <div class="_search">
+                <input type="search" placeholder="search" class="form-control" />
+                <!-- <span class=""><i class="fa fa-times-circle _searchclose" aria-hidden="true"></i></span> -->
+            </div>
+            <div>
+                <div class="__flx"  [ngStyle]="style">
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="imgwdth27">
+                        <div  class="__fullscreenimg"></div>
+                        <div class="bgGreen">
+                            <div>fullscreen.jpg</div>
+                            <div>
+                                <div class="form-check">
+                                    <input style="margin-top: 5px;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input type="text" class="form-control inputform">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div>
+                  <div (click)="advertising()" style="cursor: pointer;padding-top: 5px;"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Add Advertising</div> 
+                  <div *ngIf="avgpace">
+                    <div class="slectedfiles">
+                        <span>Selected files:</span>
+                    </div>
+                    <div class="__fileshgt">
+        
+                    </div>
+                    <div style="display: flex;margin: 6px;">
+                        <div class="__qsnt"><i class="fa fa-question" aria-hidden="true"></i></div>
+                        <div class="__Grey"><span>Cancel</span></div>
+                        <div class="__Grey"><span>Upload</span></div>
+                        <div class="__addmore"><span>Add more files</span></div>
+                    </div>
+                  </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

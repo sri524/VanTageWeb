@@ -1,0 +1,202 @@
+<div class="container-fluid headNav">
+  <div class="row" style="align-items: center;">
+    <div class="col-4">
+      <i (click)="meNuclick()" class="fa fa-th pAd4_8" [class.active]="isActive" aria-hidden="true"></i>
+      <span class="plft8"> <img src="../../assets/VTAG_Images/vantage_logo.png" width="200" alt=""></span>
+      <!-- nav -->
+      <div *ngIf="isAllopen" class="meNuStyle">
+        <div class="pAd2_5">
+          <span>Property Management</span>
+        </div>
+        <div class="row P015">
+          <div class="meNuBtns" (click)="shedule()">
+            <div><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>SCHEDULE</span></div>
+          </div>
+          <div class="meNuBtns" (click)="editmessage()">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>EDIT MESSAGE</span></div>
+          </div>
+          <div class="meNuBtns" (click)="cartpath()">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>CART PATH</span></div>
+          </div>
+          <div class="meNuBtns" (click)="fbsales()">
+            <div><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>F&B SALES</span></div>
+          </div>
+          <div class="meNuBtns" (click)="idelreport()">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>IDLE REPORT</span></div>
+          </div>
+          <div class="meNuBtns" (click)="tournament()">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TOURNAMENT</span></div>
+          </div>
+          <div class="meNuBtns" (click)="fleet()">
+            <div><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>FLEET</span></div>
+          </div>
+          <div class="meNuBtns" (click)="advertising()">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>ADVERTISING</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TRACKER</span></div>
+          </div>
+        </div>
+        <div class="pAd2_5">
+          <span>Fleet Management</span>
+        </div>
+        <div class="row P015">
+          <div class="meNuBtns">
+            <div><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>RETAIL</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TEE SHEET</span></div>
+          </div>
+          <div class="meNuBtns" [routerLink]="['/Tournament']">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TOURNAMENT</span></div>
+          </div>
+        </div>
+        <div class="pAd2_5">
+          <span>Fleet Management</span>
+        </div>
+        <div class="row P015">
+          <div class="meNuBtns">
+            <div><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>RETAIL</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TEE SHEET</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TOURNAMENT</span></div>
+          </div>
+        </div>
+        <div class="pAd2_5">
+          <span>Fleet Management</span>
+        </div>
+        <div class="row P015">
+          <div class="meNuBtns">
+            <div><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>RETAIL</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TEE SHEET</span></div>
+          </div>
+          <div class="meNuBtns">
+            <div><i class="fa fa-bullhorn" aria-hidden="true"></i></div>
+            <div class="pAd10_0"><span>TOURNAMENT</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- nav -->
+    </div>
+    <div class="col-4">
+      <div>
+        <img src="../../assets/VTAG_Images/tracker-logo.png" width="110px" alt="" class="tracker-logo">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="Selectdiv">
+        <div class="__pr10">
+          <select class="form-select" [(ngModel)]="installationId" (ngModelChange)="getInstallations(installationId)">
+            <option *ngFor="let inst of installationsDetails" [(ngValue)]="inst.id">{{inst.name}}</option>
+          </select>
+        </div>
+
+        <div class="popover__wrapper">
+          <a href="/#/Login">
+            <span class="rounded-circle">cs</span>
+            <!-- <span style="padding: 0 23px;"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+            <span><i class="fa fa-arrows-alt" aria-hidden="true"></i></span> -->
+          </a>
+          <div class="popover__content">
+            <div class="popover__message">
+              <p style="padding-top: 0.5rem;">Patrick Willson</p>
+              <button class="button">LOGOUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<div style="margin-top: 37px;position: absolute;min-width: 100%;">
+  <div class="containr-fluid">
+    <div class="row greenstriP">
+      <div class="col-2"></div>
+      <div class="col-8" style="text-align: center;">
+        <div>
+          <span (click)="Tabclick('G')" [ngClass]="{'active': srchst === 'G' }" class="zones"><i class="fa fa-xing"
+              aria-hidden="true"></i> GENERAL</span>
+          <span (click)="Tabclick('T')" class="zones" [ngClass]="{'active': srchst === 'T' }"><i class="fa fa-xing"
+              aria-hidden="true"></i> TRAILS</span>
+          <span (click)="Tabclick('Z')" class="zones" [ngClass]="{'active': srchst === 'Z' }"><i
+              style="transform: rotate(270deg);font-weight: bold;" class="fa fa-bookmark-o" aria-hidden="true"></i>
+            ZONES</span>
+          <span (click)="Tabclick('R')" class="zones" [ngClass]="{'active': srchst === 'R' }"><i
+              class="fa fa-bookmark-o" aria-hidden="true"></i> REPORTS</span>
+          <span (click)="Tabclick('S')" class="zones" [ngClass]="{'active': srchst === 'S' }"><i
+              style="transform: rotate(90deg);font-weight: bold;" class="fa fa-sliders" aria-hidden="true"></i>
+            SETUP</span>
+
+
+        </div>
+      </div>
+
+      <!-- <div class="col-2" style="text-align: right;">
+          <span class="zones"><i class="fa fa-envelope" aria-hidden="true"></i> MESSAGES</span>
+        </div> -->
+    </div>
+  </div>
+
+  <div class="__flx">
+    <!-- <div class="__wdth">
+        <app-togglenav></app-togglenav>
+      </div> -->
+
+    <div style="position: absolute;">
+      <app-loader-animation *ngIf="loader"></app-loader-animation>
+      <app-left-panel (msgToHeader)="msgToMappanel($event)" (cartdata)="cartdetails($event)"></app-left-panel>
+
+    </div>
+    <div class="__wth">
+      <app-mapping (click)="mapPanel()" [cartdata]='cartdata' [StartRange]='StartRange' [Range]="Range"
+        [VisibilityStatus]="VisibilityStatus" [TimeOffset]='TimeOffset'  [notificationDate]="notificationDate" [Reset]="Reset"></app-mapping>
+
+
+      <div class="Position">
+        <app-mappanel [Menushow]="tabmenu" *ngIf="isOn" [panelmessage]='panelmessage' [cartdata]='cartdata'
+          (StartRange)='SRMapping($event)' (Range)="TimeRange($event)" (Reset)="reset($event)" (VisibilityStatus)="visibilityStatus($event)"></app-mappanel>
+
+      </div>
+    </div>
+
+    <!-- <div class="ryt-icon"  (click)="rytpanel(true)">
+        <img src="../../../assets/VTAG_Images/warningy.png" width="40px" alt="">
+       </div>  -->
+
+
+       <div class="rytoverlay">
+        <app-right-panel (notificationDate)="getNotificationDate($event)"></app-right-panel>
+      </div>
+
+  </div>
+  <div>
+    <!-- <app-footer></app-footer> -->
+  </div>
+</div>

@@ -1,0 +1,223 @@
+
+
+<div #popupContainer></div>
+<!-- <p #popupCoordinates></p> -->
+<div id="map" class="map"></div>
+<div id="popup" class="ol-popup">
+    <div id="popup-content"></div>
+  </div>
+
+  <div id="zonepopup" class="ol-dsgpopup">
+    <div id="zonepopup-content"></div>
+</div>
+<div id="hide">
+    <div *ngIf="info" #popupCoordinates class="ol-popup"></div>
+</div>
+<div *ngIf="showZone" class="zoneCls">
+    <div class="__ttltxt">
+        <span>ZONE PROPERTIES</span>
+    </div>
+    <form [formGroup]="zoneForm">
+
+    
+    <div class="_zoneinputs">
+        <div class="__tacp" *ngIf="(zoneValue==1 || zoneValue == 2) && (clickMouse==0 || clickMouse == 1 || clickMouse == 4 ||  clickMouse == 3)">
+            <div class="__dfpb">
+                <label class="__w25">Name</label>
+                <input class="__w75" type="text" class="formctrl form-control" formControlName="txtzonename" />
+            </div>
+            <div class="__dfpb" *ngIf="zoneValue==1 && (clickMouse==0 || clickMouse == 1)">
+                <label class="__w25">Type</label>
+                <select class="__w75" class="form-select" formControlName="ddltype" (change) = zoneTypeChange($event)>
+                    <option value="2">Cart Path</option>
+                    <option value="3">Restricted</option>
+                </select>
+            </div>
+            <div class="__dfp" *ngIf="showhole">
+                <label class="__w25">Hole</label>
+                <input class="__w75" type="text" class="formctrl form-control" formControlName="txthole"  />
+            </div>
+        </div>
+        <div class="__tacp" *ngIf="zoneValue==2 && ( clickMouse==0 || clickMouse ==2)">
+            <div class="__dfpb">
+                <label class="__w25">Location</label>
+                <select class="__w75" class="form-select"  formControlName="ddllocation"  (change) = locationChange($event,0)>
+                    <option *ngFor="let item of coursearray" >{{item.name}}</option>
+                </select>
+            </div>
+            <div class="__dfpb">
+                <label class="__w25">Area</label>
+                <select class="__w75" class="form-select" formControlName="ddlarea"  *ngFor="let item of countarray">
+                    <option *ngFor="let cnt of counter(item.holeCount);let i=index">
+                        <div >{{i+1}}</div></option>
+                   
+                </select>
+            </div>
+            <div class="__dfp" *ngIf="showhole">
+                <label class="__w25">Hole</label>
+                <input class="__w75" type="text" class="formctrl form-control" formControlName="txthole"  />
+            </div>
+        </div>
+        <div *ngIf="clickMouse==1 || clickMouse==0 ||  clickMouse == 2 ||  clickMouse == 3">
+        
+        
+            <div class="form-check" id="__pl">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkstopveh"
+                    (change)="changeVehicle($event)">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <img src="../../../assets/VTAG_Images/lock_badge.png" alt="" width="16" /> Stop Vehicle
+                </label>
+                <div *ngIf="showVehicletime">
+                    <div>
+                        <label>Grace Period</label>
+                        <select class="form-select" id="__w40" formControlName="ddlgraceperiod">
+                            <option value="0">None</option>
+                            <option value="5">5 seconds</option>
+                            <option value="10">10 seconds</option>
+                            <option value="15">15 seconds</option>
+                            <option value="20">20 seconds</option>
+                            <option value="30">30 seconds</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Auto-Unlock</label>
+                        <select class="form-select" id="__w40" formControlName="ddlunlock">
+                            <option>None</option>
+                            <option value="5">5 seconds</option>
+                            <option value="10">10 seconds</option>
+                            <option value="15">15 seconds</option>
+                            <option value="20">20 seconds</option>
+                            <option value="30">30 seconds</option>
+                        </select>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="form-check" id="__pl">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkbuzzer">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <img src="../../../assets/VTAG_Images/buzzer_badge.png" alt="" width="16" />Buzzer on Tag
+                </label>
+            </div>
+            <div class="form-check" id="__pl" (click)="imgShow()">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault" class="__mt">
+                    <img class="img_ppup" src="../../../assets/VTAG_Images/brushed-metal.png" alt="" width="16" /> Pop-up
+                    Messenge <span class="__fsva">PREVIEW</span>
+                </label>
+            </div>
+            <!-- popupimag -->
+            <div *ngIf="showimage" class="imgplace" (click)="zonEpopup()">
+                <img src="../../../assets/imgs/world_topo.jpg" alt="" />
+            </div>
+        </div>
+        <!-- popupimag -->
+
+        <div class="__pl15" >
+            <label><img src="../../../assets/VTAG_Images/alerts_badge.png" alt="" width="16" /> Alerts</label>
+            <div class="form-check" style="padding-left: 3em;min-height: 0em;" >
+                <input class="form-check-input" type="checkbox" value="IN" id="flexCheckDefault" formControlName="chkenter" (change)="alerTs($event)">
+                <label class="form-check-label" for="flexCheckDefault">When entering </label>
+            </div>
+            <div class="form-check" style="padding-left: 3em;min-height: 0em;" >
+                <input class="form-check-input" type="checkbox" value="OUT" id="flexCheckDefault" formControlName="chkexit" (change)="alerTs($event)">
+                <label class="form-check-label" for="flexCheckDefault">When exiting</label>
+            </div>
+        </div>
+        <!--  -->
+        <div class="alet_toggle" *ngIf="alertsselect">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdpriority" value="HIGH"  id="flexRadioDefault1" formControlName="rdpriority">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Heigh Priority
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdpriority" value="NORMAL"  id="flexRadioDefault2" formControlName="rdpriority">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Medium Priority
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdpriority" value="LOW"  id="flexRadioDefault2"  formControlName="rdpriority">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Low Priority
+                </label>
+            </div>
+            <div class="form-check" id="__plmh">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="chkalarm">
+                <label class="form-check-label" for="flexCheckDefault">Alaram in Application</label>
+            </div>
+            <div class="form-check" id="__pldf">
+                <input class="form-check-input" type="checkbox" value="EMAIL" id="flexCheckDefault" formControlName="chkemail"
+                    style="margin-right: 6px;width: 9%;">
+                <label class="form-check-label" for="flexCheckDefault" style="width: 21%;">Email: </label>
+                <input class="__w70" type="text" class="formctrl form-control" formControlName="txtemail" />
+            </div>
+        </div>
+        <!--  -->
+        <span style="padding-left: 2.2em;font-size: 9px;color: #ffffff;">Apply to:</span>
+        <div class="all-veh" style="padding: 0 7px 0 2em;" *ngIf="ZoneValue!=2">
+            <div class="form-check" style="border-bottom: 2px solid #ccc;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" 
+                    onclick="toggle(this);" formControlName="chkallvh">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                    All Vehicles
+                </label>
+            </div>
+
+            <div *ngFor="let item of vehicleValues">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{item.itemval}}" id="flexCheckDefault" [checked]="item.isSelected" (change)="getCheckValues($event.target.checked,$event)">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        <img src="{{item.itemimg}}" alt="" width="16" />{{item.itemName}}
+                    </label>
+                </div>
+            </div>
+           
+        </div>
+
+        <!-- For All Groups -->
+        <div class="all-veh" style="padding: 0 7px 0 2em;" *ngIf="ZoneValue==2">
+            <div class="form-check" style="border-bottom: 2px solid #ccc;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" 
+                    onclick="toggle(this);" formControlName="chkallgrs">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                    All Groups
+                </label>
+            </div>
+
+        </div>
+
+        <div class="__enable">
+            <input type="checkbox" class="form-check-input" value="" id="enable" formControlName="chkEnable" />
+            <label class="form-check-label" for="enable"
+                style="padding-left: 10px;font-size: 17px;font-weight: 400;">Enable</label>
+        </div>
+    </div>
+    <div class="__pd">
+        <div class="col-12">
+            <button class="btngradient" (click)="deleteZone()">Delete Zone</button>
+        </div>
+    </div>
+    <div class="__dfp">
+        <div class="col-6" id="__pr">
+            <button class="btngradient" (click)="ZoneOk()">OK</button>
+        </div>
+        <div class="col-6" id="__pr">
+            <button class="btngradient" (click)="cancelZone()">Cancel</button>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="Reset_div" *ngIf="ResetVal=='No'"><span class="Reset_Des">Showing location in the past</span>
+    <button class="Reset_btn" (click)="ResetMap()">Reset</button>
+</div>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

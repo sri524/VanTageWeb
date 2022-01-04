@@ -1,0 +1,186 @@
+<div class="brDr">
+    <div class="namettl">
+      <span>{{details.name}}</span>
+      <div style="float: right;">
+        <span style="padding: 0 9px;"><i class="fa fa-window-minimize click" aria-hidden="true"></i></span>
+        <span><i class="fa fa-times click" aria-hidden="true" (click)="close()"></i></span>
+      </div>
+    </div>
+    <div class="__bgm">
+      <ul class="tabs">
+        <li>
+          <input type="radio" checked name="tabs" id="tab1">
+          <label class="click" for="tab1">General</label>
+          <div id="tab-content1" class="tab-content animated fadeIn">
+            <form [formGroup]="tagForm">
+              <div class="mb-3 row">
+                <label id="__wtam" for="vehicalname" class="col-form-label">Vehical Name</label>
+                <div class="__wdt7">
+                  <input type="text" class="form-control" id="vehicalname" formControlName="name">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label id="__wtam" for="label" class="col-form-label">Label</label>
+                <div class="__wdt7">
+                  <input type="password" class="form-control" formControlName="label" [value]="details.label" id="label">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label id="__wtam" for="label" class="col-form-label">Type</label>
+                <div class="__wdt7">
+                  <select class="form-select" formControlName="type" aria-label="Default select example">
+                    <option *ngFor="let data of vehicalTypeNames;let i=index" [value]="data.value">{{data.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label id="__wtam" for="label" class="col-form-label">Group</label>
+                <div class="__wdt7">
+                  <select class="form-select" formControlName="group" [(ngModel)]="tagGroup"
+                    aria-label="Default select example">
+                    <option value="0">PLAYER_GROUP1</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 row" style="align-items: center;">
+                <label id="__wtam" for="label" class="col-form-label">Serial Number:</label>
+                <div class="__wdt7">
+                  <span class="__fsc">{{details.serialNumber}}</span>
+                </div>
+              </div>
+              <div class="mb-3 row" style="align-items: center;">
+                <label id="__wtam" for="label" class="col-form-label">Zones:</label>
+                <div class="__wdt7">
+                  <span class="__fsc">Pending</span>
+                </div>
+              </div>
+              <div class="mb-3 row" style="align-items: center;">
+                <label id="__wtam" for="label" class="col-form-label">Power:</label>
+                <div class="__wdt7">
+                  <span class="__fsc">{{details.coreState?.externalVoltage}}</span>
+                </div>
+              </div>
+              <div class="mb-3 row" style="align-items: center;">
+                <label id="__wtam" for="label" class="col-form-label">Last Position:</label>
+                <div class="__wdt7">
+                  <span class="__fsc">{{details.location?.time }}</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li>
+          <input type="radio" name="tabs" id="tab2">
+          <label class="click" for="tab2">Alerts</label>
+          <div id="tab-content2" class="tab-content animated fadeIn">
+            <div>
+              <mat-form-field appearance="none">
+                <input matInput [matDatepicker]="picker" class="matinput" (dateChange)="onChange($event)"  [(ngModel)]="myDate"
+                   #elementToFocus>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+              </mat-form-field>
+            <div *ngIf="alertsData.length !=0; else noItems">
+             <div *ngFor="let item of alertsData" class="d-flex" style="font-size: 12px;margin: 2px;">
+                 <div style="padding-right: 15px;">
+                   <img src="../../../assets/VTAG_Images/info.png" *ngIf="item.priority=='LOW'" style="width: 20px;">
+                   <img src="../../../assets/VTAG_Images/severe.png" *ngIf="item.priority=='HIGH'" style="width: 20px;">
+                   <img src="../../../assets/VTAG_Images/warning.png" *ngIf="item.priority=='NORMAL'" style="width: 20px;">
+                 </div>
+                 <div style="padding-right: 20px;">{{getTimeStamp(item.createTime)}}</div>
+                 <div style="padding-right: 10px;">{{item.summary}}</div>
+             </div>
+            </div>
+             <ng-template #noItems>
+              <div colspan="9" style="text-align: center;font-size: 12px;">No Notifications
+                      Available!
+              </div>
+          </ng-template>
+          
+
+            </div>
+          </div>
+        </li>
+        <li>
+          <input type="radio" name="tabs" id="tab3">
+          <label class="click" for="tab3">Technical</label>
+          <div id="tab-content3" class="tab-content animated fadeIn">
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Senial Number:</label>
+              <div class="__wdt5">
+                <span class="__fsc">{{details.serialNumber}}</span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">SIM:</label>
+              <div class="__wdt5">
+                <span class="__fsc">{{details.coreState?.sim}}</span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Firmware:</label>
+              <div class="__wdt5">
+                <span class="__fsc">{{details.coreState?.firmwareVersion}}</span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Last Position:</label>
+              <div class="__wdt5">
+                <span class="__fsc">{{details.location?.time}}</span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Zones:</label>
+              <div class="__wdt5">
+                <span class="__fsc">Pending</span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Power:</label>
+              <div class="__wdt5">
+                <span class="power"><i class="fa fa-plug" aria-hidden="true"></i></span>
+                <span class="power"><i class="fa fa-battery-full" aria-hidden="true"></i></span>
+                <span class="power"><i class="fa fa-bolt" aria-hidden="true"></i></span>
+              </div>
+            </div>
+            <div class="mb-3 row" style="align-items: center;">
+              <label id="__wdtam" for="label" class="col-form-label">Display:</label>
+              <div class="__wdt5">
+                <span class="__fsc">{{details.coreState?.displayType}}</span>
+              </div>
+            </div>
+            <div class="__df">
+              <button class="btngradient">Lock</button>
+              <button class="btngradient">Unlock</button>
+              <button class="btngradient">Poll</button>
+              <button class="btngradient">Buzzer</button>
+              <button class="btngradient">Rest</button>
+            </div>
+            <div class="__dfmt">
+              <input class="form-control" type="text">
+              <button class="btngradient">Send</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="row" class="__pabw">
+        <div class="col-6">
+          <span class="btmicons"><i class="fa fa-binoculars" aria-hidden="true" (click)="locateTag()"></i></span>
+          <span *ngIf="this.trailopen == true " class="btmicons"><i class="fa fa-line-chart" aria-hidden="true" (click)="Trail('T')"></i></span>
+          <span *ngIf="this.trailclose == true" class="btmiconscross"><i class="fa fa-times" aria-hidden="true" (click)="Trail('C')"></i></span>
+          <span class="btmicons"><i class="fa fa-lock" aria-hidden="true"></i></span>
+          <span class="btmicons"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+        </div>
+        <div class="col-6">
+          <button class="btngradient" (click)="close()">OK</button>
+          <button class="btngradient" (click)="close()">Cancel</button>
+        </div>
+      </div>
+      <br>
+      <div style="clear:both"></div>
+  
+    </div>
+  </div>

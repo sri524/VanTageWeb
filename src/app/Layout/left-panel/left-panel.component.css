@@ -1,0 +1,400 @@
+
+
+.filter_DD select{
+  width: 25%;
+  border-radius: 3px;
+  text-align-last:center;
+  }
+  .absorbing-column{
+    text-align: left;
+    white-space: nowrap;
+  }
+  .icon_st{
+    margin-top: -2px;
+  }
+
+
+
+  table tbody {
+
+    max-height: 69vh;
+  }
+
+
+  .lft-bx {
+    background-color: rgb(247, 247, 247);
+    height: calc(100vh - 79px);
+    font-weight: bold;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 82%;
+    position: relative;
+    z-index: 999;
+}
+.bdrBtm {
+  padding: 1rem 0;
+  /* border-bottom: 1px solid #ccc; */
+  background: #fff;
+}
+.__aroow {
+  text-align: right;
+  padding-right: 8px;
+  font-size: 1.5rem;
+  margin-top: 8px;
+  position: absolute;
+  right: -8%;
+  bottom: 50%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.lft-tbl{
+  display: block;
+  /* overflow: auto; */
+  width: 340px;
+  height: calc(100vh - 256px);
+  margin-bottom: 0;
+  }
+
+
+.rd_st{
+margin-top: 2px;
+}
+
+  table { border-collapse: collapse; width: 100%; }
+  th, td { 
+    background: #fff; 
+    padding: 1px 7px; 
+    font-size:0.7rem; 
+    text-align: center;
+    white-space: nowrap;
+  }
+
+
+  .tableFixHead {
+    overflow: auto;
+  }
+
+  .tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    font-size: 0.7rem;
+  }
+
+#__w8{
+   width: 8%;
+ }
+#__w11{
+   width: 11%;
+ }
+.__pl{
+padding-left: 1rem;
+}
+.__time{
+
+  color: rgb(5, 196, 5);
+  
+  font-weight: 700;
+  
+  float: left;
+  
+  font-size: 1.6rem;
+  
+  padding-top: 0rem;
+  
+  }
+
+.__cart {
+/* float: left; */
+min-width: 50%;
+line-height: 0.7rem;
+padding-left: 1rem;
+margin-top: 0.9rem;
+}
+
+/* #__cartg{
+color: rgb(5, 196, 5);
+}
+
+#__cartr{
+color: red;
+}
+
+#__cart-txt{
+font-weight: 600
+} */
+
+.cht_img{
+/* float: right; */
+margin-top: -0.5rem;
+padding-left: 10px;
+/* margin-right: 2rem */
+}
+
+
+.__pl{
+padding-left: 25px;
+font-size: 11px;
+}
+
+.box-sent {
+width: 334px;
+margin: 20px 40px auto;
+background: #236bfe;
+padding: 5px;
+text-align: center;
+color: #fff;
+font-family: arial;
+position: relative;
+border-radius: 10px;
+font-size: 11px;
+}
+.box-sent:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #236bfe;
+  border-top: 10px solid #236bfe;
+  border-bottom: 10px solid transparent;
+  left: 19px;
+  top: -13px;
+  transform: rotate(180deg);
+}
+
+.box-sent-G {
+width: 334px;
+margin: 20px 40px auto;
+background: #363a3b;
+padding: 5px;
+text-align: center;
+color: #fff;
+font-family: arial;
+position: relative;
+border-radius: 10px;
+font-size: 11px;
+}
+.box-sent-G:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #363a3b;
+  border-top: 10px solid #363a3b;
+  border-bottom: 10px solid transparent;
+  left: 19px;
+  top: -13px;
+  transform: rotate(180deg);
+}
+.text-msg{
+  padding-left: 10px;
+  background-color: transparent;
+  border: 0px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color:black;
+  width: 270px;
+  cursor:default;
+}
+
+.club{
+  display: flex;
+  padding: 0px 12px;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-bottom: -8px;
+  margin-top: 4px;
+  padding-left: 35px;
+}
+
+.send-img
+{
+  align-items: center;
+  position: relative;
+  bottom: 1px;
+  left: 8px;
+}
+
+.close-txt{
+  margin: auto;
+  margin-right: 8px;
+  font-size: 10px;
+  color: #236bfe;
+}
+
+.chtbx-hd{
+height: 40px;
+display: flex;
+align-items: center;
+padding: 0px 10px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+}
+
+.chtbx-ft{
+height: 40px;
+border-bottom-right-radius: 10px;
+padding: 0px 10px;
+display: flex;
+align-items: center;
+border-top: 1px solid rgba(0, 0, 0, 0.233);
+}
+
+.lft-icon {
+position: absolute;
+left: 0;
+top: 16px;
+z-index: 999;
+}
+
+.__zoNes {
+position: fixed;
+opacity: 1;
+right: 10px;
+top: 116px;
+width: 265px;
+overflow: hidden;
+height: calc(100vh - 185px);
+background: rgb(247 248 248);
+z-index: 999;
+border-radius: 9px;
+}
+
+.click{
+  cursor: pointer;
+}
+
+.click tr:hover,.highlighted{
+  background-color:#90ee90;
+}
+.activebtn {
+  background:linear-gradient(#febd7a,#fed8a3,#fed79f,#fec37c, #fec955,#fec37c,#fed151,#fed54f);
+  color: #000;
+  padding: 0 6px;
+
+}
+
+.dactivebtn {
+  background: #121212;
+  color: #ffffff;
+  border: 1px solid #fff;
+  padding: 0 6px;
+
+}
+
+.dactivebtn:hover {
+  background:linear-gradient(#fef4ca,#fef4ca,#fed766,#fee176,#fef4ca,#feef90);
+  color: #000;
+  padding: 0 6px;
+
+}
+.btmbtns {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+
+}
+a{
+  text-decoration: none;
+}
+
+.cApace {
+
+  width: 280px;
+
+  height: calc(100vh - 563px);
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+}
+
+
+
+@media  (min-width: 1399.98px){
+
+  .cApace {
+
+    width: 280px;
+
+    height: calc(100vh - 877px);
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+  }
+
+}
+
+/* .active{ background-color: yellow; } */
+
+
+
+.rr{
+  /* color: red; */
+  border-bottom: 3px solid red;
+  }
+  .gg{
+    border-bottom: 3px solid rgb(236, 118, 8);
+  }
+  .mm{
+    border-bottom: 3px solid magenta;
+    }
+    .bb{
+      border-bottom: 3px solid blue;
+    }
+    .oo{
+      border-bottom: 3px solid rgb(33, 142, 245);
+      }
+      .pp{
+        border-bottom: 3px solid pink;
+      }
+
+      #__cart-txt-t{
+
+        font-weight: 600;
+        
+        color:rgb(12, 134, 12);
+        
+        
+        
+        }
+        
+        #__cart-txt-b{
+        
+          font-weight: 600;
+        
+          color:rgb(165, 18, 18);
+        
+          }
+          .textarea {
+            min-height: 100%;
+            border: 1px solid #ddd;
+           
+            position: relative;
+            cursor: e-resize;
+          }
+          
+          table tr:hover,
+          table tr:hover td {
+          background-color:lightgrey;  
+          }
+
+          .table tr.active td {  
+           
+          background-color:grey;
+            
+          } 
+      
+
+
+        

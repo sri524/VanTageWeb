@@ -1,0 +1,749 @@
+<form name="vechileUsageForm" [formGroup]="vechileUsageReportForm">
+  <div class="bdr_wdh" *ngIf="RefVariable == 'U'">
+    <div class="namettl">
+      <span>Vehicle Usage Report</span>
+      <span style="float: right" (click)="close()"
+        ><i class="fa fa-times" aria-hidden="true"></i
+      ></span>
+    </div>
+    <div class="__bDr">
+      <div class="__Date">
+        <div class="MatDate">
+          <span class="StartEnddate">Start Date:</span>
+          <mat-form-field appearance="none">
+            <input
+              matInput
+              [matDatepicker]="startvupicker"
+              class="matinput"
+              (dateChange)="onChangeV($event)"
+              formControlName="startDateVR"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startvupicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startvupicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div style="padding-left: 10px">
+          <span class="StartEnddate">End Date:</span>
+          <mat-form-field appearance="none">
+            <input
+              matInput
+              [matDatepicker]="Endvupicker"
+              class="matinput"
+              (dateChange)="onChangeV($event)"
+              formControlName="endDateVR"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="Endvupicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #Endvupicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="__icons">
+        <i class="fa fa-arrow-left"></i>
+        <i class="fa fa-arrow-right"></i>
+        <button
+          style="margin-left: 15px; color: black"
+          (click)="getAveragePaceReport()"
+        >
+          <i class="fa fa-refresh" style="margin-left: -9px"></i>
+        </button>
+        <div class="pagination" style="padding-right: 60px">
+          <pagination-controls
+            (pageChange)="p = $event"
+            maxSize="5"
+          ></pagination-controls>
+        </div>
+        <button (click)="printThisPage()">
+          <i
+            class="fa fa-print"
+            aria-hidden="true"
+            style="margin-left: -9px"
+          ></i>
+        </button>
+        <div>
+          <div (click)="savedd()">
+            <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+            <span style="margin-left: -5px"
+              ><i class="fa fa-caret-down" aria-hidden="true"></i
+            ></span>
+          </div>
+          <div class="tagtoggle" *ngIf="dropdown">
+            <ul style="list-style-type: none">
+              <li><a href="">Acrobat (PDF) file</a></li>
+              <li><a href="">CVS (comma delimited)</a></li>
+              <li><a href="">Excel 97-2003</a></li>
+              <li><a href="">Rich Text Format</a></li>
+              <li><a href="">TIFF File</a></li>
+              <li><a href="">Web Archive</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rept-bx" style="height: 400px">
+        <h2 class="bottomMargin">Vehicle Usage Report</h2>
+        <div *ngIf="vehicleUsageReport.length != 0; else noItems">
+          <h3 class="bottomMargin">{{ installationName }}</h3>
+
+          <table
+            id="cartVehileUsage"
+            style="width: 642px; height: 400px"
+            class="tableline"
+          >
+            <ng-container *ngIf="vehicleCart.length != 0">
+              <tr>
+                <th colspan="4" style="background-color: transparent !important;">Cart</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>Distance(mi)</th>
+                <th>Usage(hh:mm)</th>
+                <th>Rounds</th>
+              </tr>
+            </ng-container>
+            <tr *ngFor="let cart of vehicleCart">
+              <ng-container *ngIf="vehicleCart.length != 0">
+                <td>{{ cart.tagName }}</td>
+                <td>{{ cart.distance * 0.000621371 | number: "1.1-2"}}</td>
+                <td>{{ cart.usage | hrsMinPipe}}</td>
+                <td>{{ cart.rounds }}</td>
+              </ng-container>
+            </tr>
+            <ng-container *ngIf="vehicleFood.length != 0">
+              <tr>
+                <th colspan="4" style="background-color: transparent !important;">Food Cart</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>Distance(mi)</th>
+                <th>Usage(hh:mm)</th>
+                <th>Rounds</th>
+              </tr>
+            </ng-container>
+            <tr *ngFor="let cart of vehicleFood">
+              <ng-container *ngIf="vehicleFood.length != 0">
+                <td>{{ cart.tagName }}</td>
+                <td>{{ cart.distance * 0.000621371 | number: "1.1-2"}}</td>
+                <td>{{ cart.usage | hrsMinPipe}}</td>
+                <td>{{ cart.rounds }}</td>
+              </ng-container>
+            </tr>
+            <ng-container *ngIf="vehicleMarshal.length != 0">
+              <tr>
+                <th colspan="4" style="background-color: transparent !important;">Marshal</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>Distance(mi)</th>
+                <th>Usage(hh:mm)</th>
+                <th>Rounds</th>
+              </tr>
+            </ng-container>
+            <tr *ngFor="let cart of vehicleMarshal">
+              <ng-container *ngIf="vehicleMarshal.length != 0">
+                <td>{{ cart.tagName }}</td>
+                <td>{{ cart.distance * 0.000621371 | number: "1.1-2"}}</td>
+                <td>{{ cart.usage | hrsMinPipe}}</td>
+                <td>{{ cart.rounds }}</td>
+              </ng-container>
+            </tr>
+            <ng-container *ngIf="vehicleUtility.length != 0">
+              <tr>
+                <th colspan="4" style="background-color: transparent !important;">Utility</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>Distance(mi)</th>
+                <th>Usage(hh:mm)</th>
+                <th>Rounds</th>
+              </tr>
+            </ng-container>
+            <tr *ngFor="let cart of vehicleUtility">
+              <ng-container *ngIf="vehicleUtility.length != 0">
+                <td>{{ cart.tagName }}</td>
+                <td>{{ cart.distance * 0.000621371 | number: "1.1-2"}}</td>
+                <td>{{ cart.usage | hrsMinPipe}}</td>
+                <td>{{ cart.rounds }}</td>
+              </ng-container>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <ng-template #noItems>
+        <div
+          colspan="9"
+          style="
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: black;
+          "
+        >
+          No Reports Available!
+        </div>
+      </ng-template>
+      <h3 class="bottomMargin">{{ myDate }}</h3>
+    </div>
+  </div>
+</form>
+
+<!-- AVERAGE PACE -->
+
+<form name="averagePaceForm" [formGroup]="avgPaceReportForm">
+  <div class="form-group">
+    <div class="bdr_wdh" cdkDrag *ngIf="RefVariable == 'AS'">
+      <div class="namettl">
+        <span>Average Pace Report</span>
+        <span style="float: right" (click)="close()"
+          ><i class="fa fa-times" aria-hidden="true"></i
+        ></span>
+      </div>
+      <div class="__bDr">
+        <div class="__Date">
+         <div class="MatDate">
+            <span class="StartEnddate">Start Date:</span>
+            <mat-form-field appearance="none">
+              <input
+                matInput
+                [matDatepicker]="startpicker"
+                class="matinput"
+                (dateChange)="onChange($event)"
+                formControlName="startDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startpicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startpicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div style="padding-left: 0px" class="MatDate">
+            <span class="StartEnddate">End Date:</span>
+            <mat-form-field appearance="none">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                class="matinput"
+                (dateChange)="onChange($event)"
+                formControlName="endDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="__icons">
+          <i class="fa fa-arrow-left"></i>
+          <i class="fa fa-arrow-right"></i>
+          <button
+            style="margin-left: 15px; color: black"
+            (click)="getAveragePaceReport()"
+          >
+            <i class="fa fa-refresh" style="margin-left: -9px"></i>
+          </button>
+          <!-- <i class="fa fa-refresh" ></i> -->
+          <div class="pagination" style="padding-right: 60px">
+            <pagination-controls
+              (pageChange)="p = $event"
+              maxSize="5"
+            ></pagination-controls>
+          </div>
+          <button (click)="printThisPage()">
+            <i
+              class="fa fa-print"
+              aria-hidden="true"
+              style="margin-left: -9px"
+            ></i>
+          </button>
+
+          <div>
+            <div (click)="savedd()">
+              <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+              <span style="margin-left: -5px"
+                ><i class="fa fa-caret-down" aria-hidden="true"></i
+              ></span>
+            </div>
+            <div class="tagtoggle" *ngIf="dropdown">
+              <ul style="list-style-type: none">
+                <li><a href="">Acrobat (PDF) file</a></li>
+                <li><a href="">CVS (comma delimited)</a></li>
+                <li><a href="">Excel 97-2003</a></li>
+                <li><a href="">Rich Text Format</a></li>
+                <li><a href="">TIFF File</a></li>
+                <li><a href="">Web Archive</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="rept-bx" style="height: 430px">
+          <h2 class="bottomMargin">Average Pace Report</h2>
+          <div *ngIf="averagePaceReport.length != 0; else noItems">
+            <h3 class="bottomMargin">{{ courseName }}</h3>
+            <table id="AveragePace">
+              <tr>
+                <th>Hole</th>
+                <th>Pace</th>
+                <th>AveragePace</th>
+                <th>Rounds</th>
+              </tr>
+              <tr
+                *ngFor="
+                  let avgPace of averagePaceReport
+                    | paginate: { itemsPerPage: 18, currentPage: p }
+                "
+              >
+                <td>{{ avgPace.holeName }}</td>
+                <td>{{ avgPace.targetPace }}</td>
+                <td>{{ avgPace.averagePace | number: "1.0-0" }}</td>
+                <td>{{ avgPace.rounds }}</td>
+              </tr>
+            </table>
+            <hr />
+            <p style="font-size: large">
+              Total
+              <span style="margin-left: 140px"
+                >{{ trgPacehours }}:{{ trgPaceminutes | number: "1.0-0" }}</span
+              >
+              <span style="margin-left: 65px"
+                >{{ avgPacehours }}:{{ avgPaceminutes | number: "1.0-0" }}</span
+              >
+            </p>
+          </div>
+
+          <ng-template #noItems>
+            <div
+              colspan="9"
+              style="
+                text-align: center;
+                font-size: 15px;
+                margin-bottom: 10px;
+                color: black;
+              "
+            >
+              No Reports Available!
+            </div>
+          </ng-template>
+          <h3 class="bottomMargin">{{ myDate }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- PACE DETAILS -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'PD'">
+  <div class="namettl">
+    <span>Pace Details Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__bDr">
+    <div class="__Date">
+      <div style="display: flex">
+        <span class="StartEnddate">Tags</span>
+        <span style="font-size: 0.7rem; cursor: pointer">20 Selected</span>
+      </div>
+      <div class="MatDate">
+        <span class="StartEnddate">Start Date:</span>
+        <mat-form-field appearance="none">
+          <input
+            matInput
+            [matDatepicker]="startpicker"
+            class="matinput"
+            (dateChange)="onChange($event)"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startpicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startpicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="__icons">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-arrow-right"></i>
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+      <i class="fa fa-print" aria-hidden="true"></i>
+      <div>
+        <div (click)="savedd()">
+          <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span style="margin-left: -5px"
+            ><i class="fa fa-caret-down" aria-hidden="true"></i
+          ></span>
+        </div>
+        <div class="tagtoggle" *ngIf="dropdown">
+          <ul style="list-style-type: none">
+            <li><a href="">Acrobat (PDF) file</a></li>
+            <li><a href="">CVS (comma delimited)</a></li>
+            <li><a href="">Excel 97-2003</a></li>
+            <li><a href="">Rich Text Format</a></li>
+            <li><a href="">TIFF File</a></li>
+            <li><a href="">Web Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rept-bx" style="height: 400px">
+      <h2>Pace Details Report</h2>
+    </div>
+  </div>
+</div>
+
+<!-- F&B SALES -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'FB'">
+  <div class="namettl">
+    <span>Food and Beverage Sales Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div>
+    <div class="__Date">
+      <div style="display: flex">
+        <span class="StartEnddate">Start Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+      <div style="padding-left: 10px; display: flex">
+        <span class="StartEnddate">End Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+    </div>
+    <div class="__icons">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-arrow-right"></i>
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+      <i class="fa fa-print" aria-hidden="true"></i>
+      <div>
+        <div (click)="savedd()">
+          <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span style="margin-left: -5px"
+            ><i class="fa fa-caret-down" aria-hidden="true"></i
+          ></span>
+        </div>
+        <div class="tagtoggle" *ngIf="dropdown">
+          <ul style="list-style-type: none">
+            <li><a href="">Acrobat (PDF) file</a></li>
+            <li><a href="">CVS (comma delimited)</a></li>
+            <li><a href="">Excel 97-2003</a></li>
+            <li><a href="">Rich Text Format</a></li>
+            <li><a href="">TIFF File</a></li>
+            <li><a href="">Web Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rept-bx" style="height: 400px">
+      <div class="font1rem">
+        <span>Food and beverage Sales Report for: CA - BC - Northlands</span>
+      </div>
+      <div class="font1rem">
+        <span>Advertising Demo</span>
+      </div>
+      <div>
+        <span>Monday, August 09, 2021 - Wednesday, September 08, 2021</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORKAREA REPORT -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'WR'">
+  <div class="namettl">
+    <span>Wrok Area Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__bDr">
+    <div class="__Date">
+      <div style="display: flex">
+        <span class="StartEnddate">Start Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+      <div style="padding-left: 10px; display: flex">
+        <span class="StartEnddate">End Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+    </div>
+    <div class="__icons">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-arrow-right"></i>
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+      <i class="fa fa-print" aria-hidden="true"></i>
+      <div>
+        <div (click)="savedd()">
+          <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span style="margin-left: -5px"
+            ><i class="fa fa-caret-down" aria-hidden="true"></i
+          ></span>
+        </div>
+        <div class="tagtoggle" *ngIf="dropdown">
+          <ul style="list-style-type: none">
+            <li><a href="">Acrobat (PDF) file</a></li>
+            <li><a href="">CVS (comma delimited)</a></li>
+            <li><a href="">Excel 97-2003</a></li>
+            <li><a href="">Rich Text Format</a></li>
+            <li><a href="">TIFF File</a></li>
+            <li><a href="">Web Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rept-bx" style="height: 400px">
+      <div>
+        <span>8/31/2021 - 9/7/2021</span>
+      </div>
+      <div class="font1rem">
+        <span>Work Location Summary</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK HISTORY -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'WH'">
+  <div class="namettl">
+    <span>Work History Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__bDr">
+    <div class="__Date">
+      <div style="display: flex; align-items: center">
+        <div>
+          <label class="StartEnddate">Show report for</label>
+        </div>
+        <div>
+          <select class="form-select" style="line-height: 1">
+            <option>Areas</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="__icons">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-arrow-right"></i>
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+      <i class="fa fa-print" aria-hidden="true"></i>
+      <div>
+        <div (click)="savedd()">
+          <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span style="margin-left: -5px"
+            ><i class="fa fa-caret-down" aria-hidden="true"></i
+          ></span>
+        </div>
+        <div class="tagtoggle" *ngIf="dropdown">
+          <ul style="list-style-type: none">
+            <li><a href="">Acrobat (PDF) file</a></li>
+            <li><a href="">CVS (comma delimited)</a></li>
+            <li><a href="">Excel 97-2003</a></li>
+            <li><a href="">Rich Text Format</a></li>
+            <li><a href="">TIFF File</a></li>
+            <li><a href="">Web Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rept-bx" style="height: 400px">
+      <div class="font1rem">
+        <span>Work History Report</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vehicle ACTIVITY -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'VA'">
+  <div class="namettl">
+    <span>Detailed Vehicle Work Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__bDr">
+    <div class="__Date">
+      <div style="display: flex; padding-right: 15px">
+        <span class="StartEnddate">Tags</span>
+        <span style="font-size: 0.7rem; cursor: pointer">20 Selected</span>
+      </div>
+      <div style="display: flex">
+        <span class="StartEnddate">Start Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+      <div style="padding-left: 10px; display: flex">
+        <span class="StartEnddate">End Date:</span>
+        <input
+          type="date"
+          placeholder="MM/DD/YYYY"
+          class="date-inpt form-control"
+        />
+      </div>
+    </div>
+    <div class="__icons">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-arrow-right"></i>
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+      <i class="fa fa-print" aria-hidden="true"></i>
+      <div>
+        <div (click)="savedd()">
+          <span><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span style="margin-left: -5px"
+            ><i class="fa fa-caret-down" aria-hidden="true"></i
+          ></span>
+        </div>
+        <div class="tagtoggle" *ngIf="dropdown">
+          <ul style="list-style-type: none">
+            <li><a href="">Acrobat (PDF) file</a></li>
+            <li><a href="">CVS (comma delimited)</a></li>
+            <li><a href="">Excel 97-2003</a></li>
+            <li><a href="">Rich Text Format</a></li>
+            <li><a href="">TIFF File</a></li>
+            <li><a href="">Web Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rept-bx" style="height: 400px">
+      <div class="font1rem">
+        <span>Detailed Vehicle Work Report</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IDLE -->
+
+<div class="bdr_wdh" *ngIf="RefVariable == 'I'">
+  <div class="namettl">
+    <span>Idle Report</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__bDr">
+    <div class="__Date">
+      <div class="dfx55">
+        <div style="display: flex">
+          <span class="StartEnddate">Start Date:</span>
+          <input
+            type="date"
+            placeholder="MM/DD/YYYY"
+            class="date-inpt form-control"
+          />
+        </div>
+        <div style="padding-left: 10px; display: flex">
+          <span class="StartEnddate">End Date:</span>
+          <input
+            type="date"
+            placeholder="MM/DD/YYYY"
+            class="date-inpt form-control"
+          />
+        </div>
+        <div class="dfx">
+          <div class="rangelables"><label>Idle Filter</label></div>
+          <div style="padding-top: 5px">
+            <input type="range" class="form-range" id="customRange1" />
+          </div>
+          <div class="rangelables"><label>90 Minutes</label></div>
+        </div>
+      </div>
+      <div class="iconalign">
+        <span class="__exporticons"
+          ><i class="fa fa-print" aria-hidden="true"></i
+        ></span>
+        <span class="exporttxt">Export</span>
+        <span class="__exporticons"
+          ><i class="fa fa-file-word-o" aria-hidden="true"></i
+        ></span>
+        <span class="__exporticons"
+          ><i class="fa fa-file-excel-o" aria-hidden="true"></i
+        ></span>
+        <span class="__exporticons"></span>
+      </div>
+    </div>
+    <div class="__bgGrey">
+      <span>Drag a column header and drop it here to group by that column</span>
+    </div>
+    <div class="rept-bx" style="height: 400px"></div>
+  </div>
+</div>
+
+<!-- IMPORT INVOICE -->
+
+<div class="Ibdr_wdh" *ngIf="RefVariable == 'II'">
+  <div class="Inamettl">
+    <span>Import Invoices</span>
+    <span style="float: right" (click)="close()"
+      ><i class="fa fa-times" aria-hidden="true"></i
+    ></span>
+  </div>
+  <div class="__IbDr">
+    <input type="file" id="getFile" style="display: none" />
+
+    <div>
+      <button
+        class="IbrOwse"
+        onclick="document.getElementById('getFile').click()"
+      >
+        Browse
+      </button>
+      <input type="file" id="getFile" style="display: none" />
+    </div>
+  </div>
+</div>
