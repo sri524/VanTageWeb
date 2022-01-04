@@ -149,6 +149,7 @@ export class HeaderComponent implements OnInit {
 
   toggleButton() {
     this.service.getToggleButton().subscribe((res) => {
+      
       if (res == 1) {
         this.isAllopen = false;
       }
